@@ -1,0 +1,17 @@
+<input type="text" [(ngModel)]="serverName">
+<br><br>
+<button class="btn btn-primary" (click)="createServer()">Add Server</button>
+<p *ngIf="serverCreated; else noServer"></p>
+<ng-template #noServer>No server created!</ng-template>
+<br>
+<div *ngFor="let server of servers; let i = index">
+    <p>
+     {{(i+1) + ". "}}Server with ID 10 is  
+     <span 
+        [ngStyle]="{backgroundColor: getColor(i)}" 
+        [ngClass]="{'online': getServerStatus(i), 'offline' : !getServerStatus(i)}"
+    >
+        {{server.status}}  
+     </span>
+    </p>
+</div>

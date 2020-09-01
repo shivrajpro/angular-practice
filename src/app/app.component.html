@@ -4,10 +4,13 @@
   (bpCreated)="onBluePrintAdded($event)"
   ></app-cockpit>
   <hr>
+  <button class="btn btn-primary" (click)="onChangeFirst()">Change First Element</button>
+  <button class="btn btn-danger" (click)="onDeleteFirst()">Delete First Element</button>
   <div class="row">
     <div class="col-xs-12">
       <app-server-elements *ngFor="let serverElement of serverElements"
       [srvElement]="serverElement"
+      [name]="serverElement.name"
       >
       <p>
         <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>

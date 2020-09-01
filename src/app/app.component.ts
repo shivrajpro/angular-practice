@@ -22,5 +22,13 @@ export class AppComponent {
       name: serverData.serverName,
       content: serverData.serverContent
     });
-  }    
+  }
+  
+  onChangeFirst(){
+    this.serverElements[0].name="Changed!";
+  }
+
+  onDeleteFirst(){
+    this.serverElements.splice(0,1);
+  }
 }

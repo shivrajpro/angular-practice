@@ -8,10 +8,9 @@ import { Recipe } from "../recipe.model";
 })
 export class RecipeListComponent implements OnInit {
   recipes : Recipe[]=[
-    new Recipe("Duck", "Fried Duck", "https://cdn.pixabay.com/photo/2020/02/02/15/07/meat-4813261_960_720.jpg"),
-    new Recipe("Duck", "Fried Duck", "https://cdn.pixabay.com/photo/2020/02/02/15/07/meat-4813261_960_720.jpg"),
-    new Recipe("Duck", "Fried Duck", "https://cdn.pixabay.com/photo/2020/02/02/15/07/meat-4813261_960_720.jpg"),
-    new Recipe("Duck", "Fried Duck", "https://cdn.pixabay.com/photo/2020/02/02/15/07/meat-4813261_960_720.jpg")
+    new Recipe("Duck 1", "Fried Duck 1", "https://cdn.pixabay.com/photo/2020/02/02/15/07/meat-4813261_960_720.jpg"),
+    new Recipe("Duck 2", "Fried Duck 2", "https://cdn.pixabay.com/photo/2020/02/02/15/07/meat-4813261_960_720.jpg"),
+    new Recipe("Duck 3", "Fried Duck 3", "https://cdn.pixabay.com/photo/2020/02/02/15/07/meat-4813261_960_720.jpg")
   ];
 
   constructor() { }

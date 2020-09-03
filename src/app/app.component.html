@@ -1,22 +1,11 @@
 <div class="container">
-  <app-cockpit 
-  (serverCreated)="onServedAdded($event)"
-  (bpCreated)="onBluePrintAdded($event)"
-  ></app-cockpit>
-  <hr>
-  <button class="btn btn-primary" (click)="onChangeFirst()">Change First Element</button>
-  <button class="btn btn-danger" (click)="onDeleteFirst()">Delete First Element</button>
   <div class="row">
     <div class="col-xs-12">
-      <app-server-elements *ngFor="let serverElement of serverElements"
-      [srvElement]="serverElement"
-      [name]="serverElement.name"
-      >
-      <p #paragraph>
-        <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
-        <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
-      </p>  
-      </app-server-elements>
+      <button class="btn btn-primary">Only Show odd numbers</button>
     </div>
+    <br><br>
+    <ul class="list-group">
+      <li class="list-group-item"></li>
+    </ul>
   </div>
 </div>

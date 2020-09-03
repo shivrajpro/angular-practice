@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <button class="btn btn-primary" (click)="onlyOdd = !onlyOdd">Only Show odd numbers</button>
+      <button class="btn btn-primary" (click)="onlyOdd = !onlyOdd; showEven=!showEven">Only Show odd numbers</button>
     </div>
     <br><br><br><br>
     <ul class="list-group">
@@ -12,5 +12,13 @@
 
     <p basicHighlight> this is some basic highlight</p>
     <p betterHighlight [defaultColor]="'yellow'" highlightColor="red"> this is some better highlight</p>
+
+    <h2>Using Custom Structural Directive</h2>
+
+    <ul class="list-group" *appUnless="showEven">
+      <li class="list-group-item" *ngFor="let num of evenNumbers">
+        {{num}}
+      </li>
+    </ul>
   </div>
 </div>

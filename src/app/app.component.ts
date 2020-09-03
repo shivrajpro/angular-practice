@@ -7,7 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   numbers = [1,2,3,4,5];
-  evenNumbers = [2,4,6,8];
+  evenNumbers = [2,4,6,8,10];
   onlyOdd = false;
   showEven=false;
+  switchCaseVal = 101;
 }

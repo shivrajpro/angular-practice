@@ -1,34 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-6">
-      <button class="btn btn-primary" (click)="onlyOdd = !onlyOdd; showEven=!showEven">Toggle</button>
-      <br><br>
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let num of numbers">
-          {{num}}
-        </li>
-      </ul>
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <app-new-account (accountAdded)="onAccountAdded($event)"></app-new-account>
+      <hr>
+      <app-account
+        *ngFor="let acc of accounts; let i = index"
+        [account]="acc"
+        [id]="i"
+        (statusChanged)="onStatusChanged($event)"></app-account>
     </div>
-
-    <div class="col-xs-6">
-      <h2>Using Custom Structural Directive</h2>
-  
-      <ul class="list-group" *appUnless="showEven">
-        <li class="list-group-item" *ngFor="let num of evenNumbers">
-          {{num}}
-        </li>
-      </ul>
-    </div>
-
-    
-  </div>
-  <p basicHighlight> this is some basic highlight</p>
-  <p betterHighlight [defaultColor]="'yellow'" highlightColor="red"> this is some better highlight</p>
-
-  <h2>Demonstrate ngSwitch</h2>
-  <div [ngSwitch]="switchCaseVal">
-    <p *ngSwitchCase="5">Value is 5</p>
-    <p *ngSwitchCase="10">Value is 10</p>
-    <p *ngSwitchDefault>Value is neither 5 nor 10</p>
   </div>
 </div>

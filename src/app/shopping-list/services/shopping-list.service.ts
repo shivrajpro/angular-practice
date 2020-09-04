@@ -1,4 +1,4 @@
-import { Ingredient } from "../shared/Ingredient.model";
+import { Ingredient } from "../../shared/Ingredient.model";
 
 export class ShoppingListService{
     ingredients:Ingredient[]=[
@@ -6,4 +6,8 @@ export class ShoppingListService{
         new Ingredient("Tomatoes", 10)
       ];
     
+
+    getIngredients(){
+      return this.ingredients.slice();
+    }
 }

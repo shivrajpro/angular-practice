@@ -1,4 +1,4 @@
-import { Recipe } from "../recipes/recipe.model";
+import { Recipe } from "../../recipes/recipe.model";
 
 export class RecipeService{
     recipes : Recipe[]=[
@@ -7,4 +7,7 @@ export class RecipeService{
         new Recipe("Pizza", "Margherita", "https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_960_720.jpg")
       ];
     
+    getRecipes(){
+      return this.recipes.slice();
+    }
 }

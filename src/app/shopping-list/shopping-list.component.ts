@@ -9,7 +9,7 @@ import { ShoppingListService } from './services/shopping-list.service';
   // providers: [ShoppingListService]
 })
 export class ShoppingListComponent implements OnInit {
-  ingredients:Ingredient[]=[ ];
+  ingredients:Ingredient[]=[];
 
   constructor(private shoppingListService: ShoppingListService) { }
 

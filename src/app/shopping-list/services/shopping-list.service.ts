@@ -4,7 +4,8 @@ import { Subject } from "rxjs";
 import { Ingredient } from "../../shared/Ingredient.model";
 
 export class ShoppingListService{
-  
+  startedEditing = new Subject<number>();
+
   // ingredientsChanged = new EventEmitter<Ingredient[]>();
   ingredientsChanged = new Subject<Ingredient[]>();
 
@@ -15,6 +16,10 @@ export class ShoppingListService{
     
   getIngredients(){
     return this.ingredients;
+  }
+
+  getIngredient(index:number){
+    return this.ingredients[index];
   }
 
   addIngredient(ing: Ingredient){
@@ -29,5 +34,15 @@ export class ShoppingListService{
     this.ingredients.push(...ingredients);//spread operator
 
     this.ingredientsChanged.next(this.ingredients);
+  }
+
+  updateIngrediemt(index:number, updatedIng:Ingredient){
+    this.ingredients[index] = updatedIng;
+    this.ingredientsChanged.next(this.ingredients.slice());
+  }
+
+  deleteIngredient(index:number){
+    this.ingredients.splice(index, 1);
+    this.ingredientsChanged.next(this.ingredients.slice());
   }
 }

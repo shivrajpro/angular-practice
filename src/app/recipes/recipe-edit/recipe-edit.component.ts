@@ -35,7 +35,7 @@ export class RecipeEditComponent implements OnInit {
     const newRecipe = new Recipe(
         this.recipeForm.value['name'],
         this.recipeForm.value['description'],
-        this.recipeForm.value['imagePath'],
+        this.recipeForm.value['imagepath'],
         this.recipeForm.value['ingredients']
       );
 
@@ -45,7 +45,7 @@ export class RecipeEditComponent implements OnInit {
       this.recipeService.addRecipe(newRecipe);
     }
 
-    this.recipeForm.reset();
+    this.onCancel();
   }
 
   private initForm() {
@@ -72,7 +72,7 @@ export class RecipeEditComponent implements OnInit {
 
     this.recipeForm = new FormGroup({
       'name': new FormControl(recipeName, Validators.required),
-      'imagePath': new FormControl(recipeImagePath, Validators.required),
+      'imagepath': new FormControl(recipeImagePath, Validators.required),
       'description': new FormControl(recipeDescription, Validators.required),
       'ingredients':  this.recipeIngredients
     });

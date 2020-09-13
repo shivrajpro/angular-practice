@@ -6,10 +6,12 @@
             <button
               type="submit"
               class="btn btn-success"
-            >Save</button>
+              [disabled]="!recipeForm.valid"
+            >{{editMode?'Update':'Save'}} </button>
             <button 
                 type="button" 
                 class="btn btn-danger"
+                (click)="onCancel()"
             >Cancel</button>
           </div>
         </div>
@@ -34,7 +36,8 @@
                 id="imagePath"
                 formControlName="imagePath"
                 class="form-control"
-                #imagePath>
+                #imagePath
+              >
             </div>
           </div>
         </div>
@@ -80,6 +83,7 @@
                 <button
                   type="button"
                   class="btn btn-danger"
+                  (click)="onDeleteIngredient(i)"
                 >X</button>
               </div>
             </div>

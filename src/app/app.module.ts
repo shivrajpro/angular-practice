@@ -14,6 +14,7 @@ import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.compon
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 
 import { ShoppingListService } from "./shopping-list/services/shopping-list.service";
+import { RecipeService } from './recipes/services/recipe.service';
 
 import { DropDownDirective } from "./shared/drop-down.directive";
 
@@ -37,7 +38,7 @@ import { DropDownDirective } from "./shared/drop-down.directive";
     FormsModule,
     ReactiveFormsModule //to make directives work
   ],
-  providers: [ShoppingListService],
+  providers: [ShoppingListService, RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

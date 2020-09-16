@@ -1,10 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map } from "rxjs/operators";
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Post } from "./post.model";
 import { PostsService } from "./posts.service";
 import { NgForm } from '@angular/forms';
-import { error } from '@angular/compiler/src/util';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,17 +10,21 @@ import { error } from '@angular/compiler/src/util';
   styleUrls: ['./app.component.css'],
   providers: [PostsService]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   @ViewChild('postForm') postForm: NgForm;
 
   error = null;
   loadedPosts: Post[] = [];
   isFetching: boolean = false;
+  errorSubscription: Subscription;
 
   constructor(private postsService: PostsService) { }
 
   ngOnInit() {
     this.getPosts();
+    this.errorSubscription = this.postsService.error.subscribe(error=>{
+      this.error = error;
+    });
   }
   
   onCreatePost(postData: { title: string; content: string }) {
@@ -51,5 +53,13 @@ export class AppComponent implements OnInit {
       this.isFetching = false;
       this.error = errorResponse.error.error;
     });
+  }
+
+  onHandleError(){
+    this.error = null;
+  }
+
+  ngOnDestroy(){
+    this.postsService.error.unsubscribe();
   }
 }

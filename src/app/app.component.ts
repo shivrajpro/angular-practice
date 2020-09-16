@@ -1,32 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from "rxjs/operators";
+import { Post } from "./post.model";
+import { PostsService } from "./posts.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [PostsService]
 })
 export class AppComponent implements OnInit {
-  loadedPosts = [];
+  loadedPosts: Post[] = [];
+  isFetching: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private postsService: PostsService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.postsService.fetchPosts();
+  }
 
   onCreatePost(postData: { title: string; content: string }) {
     // Send Http request
-    this.http
-      .post(
-        'https://ng-complete-guide-c56d3.firebaseio.com/posts.json',
-        postData
-      )
-      .subscribe(responseData => {
-        console.log(responseData);
-      });
+    this.postsService.createAndStore(postData.title, postData.content);
   }
 
   onFetchPosts() {
     // Send Http request
+    this.postsService.fetchPosts();
   }
 
   onClearPosts() {

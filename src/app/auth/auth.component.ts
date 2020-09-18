@@ -13,7 +13,8 @@ import { AuthService } from "./auth.service";
 })
 export class AuthComponent{
     inLoginMode:boolean = false;
-    isLoading: boolean = true;
+    isLoading: boolean = false;
+    error = null;
 
     constructor(private authService: AuthService){}
 
@@ -36,9 +37,10 @@ export class AuthComponent{
             .subscribe(responseData =>{
                     this.isLoading = false;
                     console.log(responseData);
-                },error=>{
+                },errorMsg=>{
                     this.isLoading = false;
-                    console.log(error);
+                    this.error = errorMsg;
+                    console.log(errorMsg);
                 });
 
             authForm.reset();

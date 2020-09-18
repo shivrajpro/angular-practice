@@ -1,5 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { catchError } from "rxjs/operators";
+import { throwError } from "rxjs";
 
 interface AuthResponseData {
     idToken: string;        //	A Firebase Auth ID token for the newly created user.
@@ -9,7 +11,7 @@ interface AuthResponseData {
     localId: string         //  The uid of the newly created use
 }
 
-@Injectable({ providedIn:'root'})
+@Injectable({ providedIn: 'root' })
 export class AuthService {
 
     constructor(private http: HttpClient) { }
@@ -21,6 +23,18 @@ export class AuthService {
                 password: passowrd,
                 returnSecureToken: true
             }
-        );
+        ).pipe(catchError(errorRes => {
+            let errorMessage = "An Unknown Error Occurred!";
+
+            if (!errorRes.error || !errorRes.error.error)
+                return throwError(errorMessage);
+
+            switch (errorRes.error.error.message) {
+                case 'EMAIL_EXISTS':
+                    errorMessage = 'This email id already exists!'
+            }
+
+            return throwError(errorMessage);
+        }));
     }
 }

@@ -14,10 +14,12 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { AuthComponent } from "./auth/auth.component";
+import { LoadingSpinnerComponent } from "./shared/loading-spinner/loading-spinner.component";
 
 import { ShoppingListService } from "./shopping-list/services/shopping-list.service";
 import { RecipeService } from './recipes/services/recipe.service';
 import { DataStorageService } from "./services/data-storage.service";
+import { AuthService } from "./auth/auth.service";
 
 import { DropDownDirective } from "./shared/drop-down.directive";
 
@@ -34,7 +36,8 @@ import { DropDownDirective } from "./shared/drop-down.directive";
     DropDownDirective,
     RecipeStartComponent,
     RecipeEditComponent,
-    AuthComponent
+    AuthComponent,
+    LoadingSpinnerComponent    
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,12 @@ import { DropDownDirective } from "./shared/drop-down.directive";
     ReactiveFormsModule, //to make directives work
     HttpClientModule    
   ],
-  providers: [ShoppingListService, RecipeService, DataStorageService],
+  providers: [
+    ShoppingListService, 
+    RecipeService,
+    DataStorageService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

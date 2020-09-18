@@ -13,6 +13,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { AuthComponent } from "./auth/auth.component";
 
 import { ShoppingListService } from "./shopping-list/services/shopping-list.service";
 import { RecipeService } from './recipes/services/recipe.service';
@@ -32,7 +33,8 @@ import { DropDownDirective } from "./shared/drop-down.directive";
     ShoppingEditComponent,
     DropDownDirective,
     RecipeStartComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

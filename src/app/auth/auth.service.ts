@@ -56,7 +56,10 @@ export class AuthService {
         if (!userData)
             return;
 
-        const loadedUser = new User(userData.email, userData.userId, userData._token, new Date(userData._tokenExpiration));
+        const loadedUser = new User(userData.email, 
+                                    userData.userId,
+                                    userData._token,
+                                    new Date(userData._tokenExpiration));
 
         if(loadedUser.token){
             this.userChanged.next(loadedUser);
@@ -110,7 +113,7 @@ export class AuthService {
 
         this.userChanged.next(user);
         localStorage.setItem('userData', JSON.stringify(user));
-        // console.log("user = ", user);
+        // console.log("user = ", JSON.stringify(user));
         this.autoLogout(expiresIn*1000);
     }
 

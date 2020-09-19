@@ -1,8 +1,9 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { BehaviorSubject, throwError } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
-import { Subject, throwError } from "rxjs";
 import { User } from "./user.model";
+
 export interface AuthResponseData {
     idToken: string;        //	A Firebase Auth ID token for the newly created user.
     email: string;          //  The email for the newly created user.
@@ -14,7 +15,7 @@ export interface AuthResponseData {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-    userChanged = new Subject<User>();
+    userChanged = new BehaviorSubject<User>(null);
 
     webApiKey = "AIzaSyADY1P8OfM_kDeXGmheKpFLuHaoMN9h7rM";
 
@@ -66,7 +67,7 @@ export class AuthService {
         const user = new User(email, userId, token, expirationDate);
 
         this.userChanged.next(user);
-        console.log("user = ", user);
+        // console.log("user = ", user);
     }
 
     private handleError(errorRes: HttpErrorResponse) {

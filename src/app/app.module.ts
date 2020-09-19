@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +20,7 @@ import { ShoppingListService } from "./shopping-list/services/shopping-list.serv
 import { RecipeService } from './recipes/services/recipe.service';
 import { DataStorageService } from "./services/data-storage.service";
 import { AuthService } from "./auth/auth.service";
+import { AuthInterceptorService } from "./auth/auth-interceptor.service";
 
 import { DropDownDirective } from "./shared/drop-down.directive";
 
@@ -50,7 +51,12 @@ import { DropDownDirective } from "./shared/drop-down.directive";
     ShoppingListService, 
     RecipeService,
     DataStorageService,
-    AuthService
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

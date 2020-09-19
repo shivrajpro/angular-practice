@@ -15,6 +15,8 @@ export interface AuthResponseData {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+    expirationTimer = null;
+
     userChanged = new BehaviorSubject<User>(null);
 
     webApiKey = "AIzaSyADY1P8OfM_kDeXGmheKpFLuHaoMN9h7rM";
@@ -43,20 +45,28 @@ export class AuthService {
         );
     }
 
-    autoLogin(){
-        const userData:{
+    autoLogin() {
+        const userData: {
             email: string,
             userId: string,
             _token: string,
             _tokenExpiration: string
         } = JSON.parse(localStorage.getItem('userData'));
 
-        if(!userData)
+        if (!userData)
             return;
-        
+
         const loadedUser = new User(userData.email, userData.userId, userData._token, new Date(userData._tokenExpiration));
 
-        this.userChanged.next(loadedUser);
+        if(loadedUser.token){
+            this.userChanged.next(loadedUser);
+            const expirationDuration = 
+                new Date(userData._tokenExpiration).getTime() -
+                new Date().getTime();
+
+            this.autoLogout(expirationDuration);
+        }
+
     }
 
     login(email: string, password: string) {
@@ -77,8 +87,21 @@ export class AuthService {
         );
     }
 
-    logout(){
+    logout() {
         this.userChanged.next(null);
+        localStorage.removeItem('userData');
+
+        if(!this.expirationTimer)
+            clearTimeout(this.expirationTimer);
+        this.expirationTimer = null;
+    }
+
+    autoLogout(expirationDuration: number) {
+        console.log(expirationDuration);
+        
+        this.expirationTimer = setTimeout(() => {
+            this.logout();
+        }, expirationDuration);
     }
 
     private handleAuthentication(email: string, userId: string, token: string, expiresIn: number) {
@@ -88,6 +111,7 @@ export class AuthService {
         this.userChanged.next(user);
         localStorage.setItem('userData', JSON.stringify(user));
         // console.log("user = ", user);
+        this.autoLogout(expiresIn*1000);
     }
 
     private handleError(errorRes: HttpErrorResponse) {

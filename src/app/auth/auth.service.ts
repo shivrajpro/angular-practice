@@ -43,6 +43,21 @@ export class AuthService {
         );
     }
 
+    autoLogin(){
+        const userData:{
+            email: string,
+            userId: string,
+            _token: string,
+            _tokenExpiration: string
+        } = JSON.parse(localStorage.getItem('userData'));
+
+        if(!userData)
+            return;
+        
+        const loadedUser = new User(userData.email, userData.userId, userData._token, new Date(userData._tokenExpiration));
+
+        this.userChanged.next(loadedUser);
+    }
 
     login(email: string, password: string) {
         return this.http.post<AuthResponseData>(this.loginUrl + this.webApiKey,
@@ -62,11 +77,16 @@ export class AuthService {
         );
     }
 
+    logout(){
+        this.userChanged.next(null);
+    }
+
     private handleAuthentication(email: string, userId: string, token: string, expiresIn: number) {
         const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
         const user = new User(email, userId, token, expirationDate);
 
         this.userChanged.next(user);
+        localStorage.setItem('userData', JSON.stringify(user));
         // console.log("user = ", user);
     }
 

@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { DataStorageService } from '../services/data-storage.service';
@@ -13,7 +14,8 @@ export class HeaderComponent implements OnInit, OnDestroy{
     userSub: Subscription;
 
     constructor(private dsService: DataStorageService,
-                private authService: AuthService){}
+                private authService: AuthService,
+                private router: Router){}
 
     ngOnInit(){
         this.userSub =  this.authService.userChanged.
@@ -31,6 +33,11 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
     onFetchData(){
         this.dsService.fetchRecipes().subscribe();
+    }
+
+    onLogout(){
+        this.authService.logout();
+        this.router.navigate(['/login']);
     }
 
     ngOnDestroy(){

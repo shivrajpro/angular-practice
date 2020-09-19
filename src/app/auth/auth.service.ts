@@ -1,8 +1,8 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError } from "rxjs/operators";
-import { throwError } from "rxjs";
-
+import { catchError, tap } from "rxjs/operators";
+import { Subject, throwError } from "rxjs";
+import { User } from "./user.model";
 export interface AuthResponseData {
     idToken: string;        //	A Firebase Auth ID token for the newly created user.
     email: string;          //  The email for the newly created user.
@@ -14,6 +14,8 @@ export interface AuthResponseData {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+    userChanged = new Subject<User>();
+
     webApiKey = "AIzaSyADY1P8OfM_kDeXGmheKpFLuHaoMN9h7rM";
 
     signUpUrl = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=";
@@ -23,34 +25,58 @@ export class AuthService {
     constructor(private http: HttpClient) { }
 
     signup(email: string, password: string) {
-        return this.http.post<AuthResponseData>(this.signUpUrl+this.webApiKey,
+        return this.http.post<AuthResponseData>(this.signUpUrl + this.webApiKey,
             {
                 email: email,
                 password: password,
                 returnSecureToken: true
             }
-        ).pipe(catchError(this.handleError));
+        ).pipe(catchError(this.handleError),
+            tap(resData => {
+                this.handleAuthentication(
+                    resData.email,
+                    resData.localId,
+                    resData.idToken,
+                    +resData.expiresIn);
+            })
+        );
     }
 
 
-    login(email: string, password: string){
-        return this.http.post<AuthResponseData>(this.loginUrl+this.webApiKey,
+    login(email: string, password: string) {
+        return this.http.post<AuthResponseData>(this.loginUrl + this.webApiKey,
             {
                 email: email,
                 password: password,
                 returnSecureToken: true
             }
-        ).pipe(catchError(this.handleError));        
+        ).pipe(catchError(this.handleError),
+            tap(resData => {
+                this.handleAuthentication(
+                    resData.email,
+                    resData.localId,
+                    resData.idToken,
+                    +resData.expiresIn);
+            })
+        );
     }
-    
-    private handleError(errorRes: HttpErrorResponse){
+
+    private handleAuthentication(email: string, userId: string, token: string, expiresIn: number) {
+        const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+        const user = new User(email, userId, token, expirationDate);
+
+        this.userChanged.next(user);
+        console.log("user = ", user);
+    }
+
+    private handleError(errorRes: HttpErrorResponse) {
         console.log("Error", errorRes);
 
         let errorMessage = "An Unknown Error Occurred!";
-    
+
         if (!errorRes.error || !errorRes.error.error)
             return throwError(errorMessage);
-    
+
         switch (errorRes.error.error.message) {
             case 'EMAIL_EXISTS':
                 errorMessage = 'This email Id already exists!';
@@ -61,7 +87,7 @@ export class AuthService {
             case 'EMAIL_NOT_FOUND':
                 errorMessage = 'Email Id not registered. Please try to sign up!';
         }
-    
+
         return throwError(errorMessage);
     }
 }

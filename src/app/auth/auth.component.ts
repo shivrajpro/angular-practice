@@ -1,8 +1,10 @@
-import { Component } from "@angular/core";
+import { Component, ComponentFactoryResolver, OnDestroy, ViewChild } from "@angular/core";
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AuthResponseData, AuthService } from "./auth.service";
+import { AlertComponent } from "../shared/alert/alert.component";
+import { PlaceholderDirective } from '../shared/placeholder/placeholder.directive';
 
 @Component({
     selector: 'app-auth',
@@ -13,13 +15,18 @@ import { AuthResponseData, AuthService } from "./auth.service";
         }
     `]
 })
-export class AuthComponent {
-    inLoginMode: boolean = false;
+export class AuthComponent implements OnDestroy {
+    inLoginMode: boolean = true;
     isLoading: boolean = false;
     error = null;
 
+    @ViewChild(PlaceholderDirective, {static: false}) alertHost: PlaceholderDirective;
+
+    closeSub: Subscription;
+
     constructor(private authService: AuthService,
-                private router: Router) {}
+                private router: Router,
+                private cmpFactResolver: ComponentFactoryResolver) {}
 
     onSwitchMode() {
         this.inLoginMode = !this.inLoginMode;
@@ -51,11 +58,34 @@ export class AuthComponent {
         }, errorMsg => {
             this.isLoading = false;
             this.error = errorMsg;
+            this.showErrorAlert(errorMsg);
             console.log(errorMsg);
         });
     }
 
     onCloseError(){
         this.error = null;
+    }
+
+    showErrorAlert(message: string){
+        const alertCmpFactory = this.cmpFactResolver.resolveComponentFactory(AlertComponent);
+
+        const hostViewContainerRef =  this.alertHost.viewContainerRef;
+
+        hostViewContainerRef.clear();
+
+        const containerRef = hostViewContainerRef.createComponent(alertCmpFactory);
+
+        containerRef.instance.message = message;
+
+        this.closeSub = containerRef.instance.close.subscribe(()=>{
+            this.closeSub.unsubscribe();
+            hostViewContainerRef.clear();
+        });
+    }
+
+    ngOnDestroy(){
+        if(this.closeSub)
+            this.closeSub.unsubscribe();
     }
 }

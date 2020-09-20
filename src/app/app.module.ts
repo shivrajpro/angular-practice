@@ -15,6 +15,7 @@ import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.compon
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { AuthComponent } from "./auth/auth.component";
 import { LoadingSpinnerComponent } from "./shared/loading-spinner/loading-spinner.component";
+import { AlertComponent } from './shared/alert/alert.component';
 
 import { ShoppingListService } from "./shopping-list/services/shopping-list.service";
 import { RecipeService } from './recipes/services/recipe.service';
@@ -23,7 +24,7 @@ import { AuthService } from "./auth/auth.service";
 import { AuthInterceptorService } from "./auth/auth-interceptor.service";
 
 import { DropDownDirective } from "./shared/drop-down.directive";
-import { AlertComponent } from './shared/alert/alert.component';
+import { PlaceholderDirective } from "./shared/placeholder/placeholder.directive";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AlertComponent } from './shared/alert/alert.component';
     RecipeEditComponent,
     AuthComponent,
     LoadingSpinnerComponent,
-    AlertComponent    
+    AlertComponent,
+    PlaceholderDirective    
   ],
   imports: [
     BrowserModule,

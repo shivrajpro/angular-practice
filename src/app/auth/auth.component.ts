@@ -54,4 +54,8 @@ export class AuthComponent {
             console.log(errorMsg);
         });
     }
+
+    onCloseError(){
+        this.error = null;
+    }
 }

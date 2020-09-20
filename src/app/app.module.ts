@@ -23,6 +23,7 @@ import { AuthService } from "./auth/auth.service";
 import { AuthInterceptorService } from "./auth/auth-interceptor.service";
 
 import { DropDownDirective } from "./shared/drop-down.directive";
+import { AlertComponent } from './shared/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DropDownDirective } from "./shared/drop-down.directive";
     RecipeStartComponent,
     RecipeEditComponent,
     AuthComponent,
-    LoadingSpinnerComponent    
+    LoadingSpinnerComponent,
+    AlertComponent    
   ],
   imports: [
     BrowserModule,

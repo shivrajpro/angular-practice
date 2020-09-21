@@ -16,15 +16,12 @@ import { DropDownDirective } from "./shared/drop-down.directive";
 import { LoadingSpinnerComponent } from "./shared/loading-spinner/loading-spinner.component";
 import { PlaceholderDirective } from "./shared/placeholder/placeholder.directive";
 import { ShoppingListService } from "./shopping-list/services/shopping-list.service";
-import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { ShoppingListModule } from "./shopping-list/shopping-list.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
     DropDownDirective,
     AuthComponent,
     LoadingSpinnerComponent,
@@ -37,7 +34,8 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
     FormsModule,
     ReactiveFormsModule, //to make directives work
     HttpClientModule,
-    RecipesModule    
+    RecipesModule,
+    ShoppingListModule
   ],
   providers: [
     ShoppingListService, 

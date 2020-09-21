@@ -23,7 +23,6 @@ import { SharedModule } from '../shared/shared.module';
     imports:[
         RecipesRoutingModule,
         SharedModule,
-        // CommonModule,
         RouterModule,
         ReactiveFormsModule        
     ]

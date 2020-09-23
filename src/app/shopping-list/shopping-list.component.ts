@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggingService } from '../logging.service';
+import { LoggingService } from '../services/logging.service';
 import { Ingredient } from "../shared/Ingredient.model";
 import { ShoppingListService } from './services/shopping-list.service';
 

@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, throwError } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
 import { User } from "./user.model";
+import { environment } from "../../environments/environment";
 
 export interface AuthResponseData {
     idToken: string;        //	A Firebase Auth ID token for the newly created user.
@@ -19,7 +20,7 @@ export class AuthService {
 
     userChanged = new BehaviorSubject<User>(null);
 
-    webApiKey = "AIzaSyADY1P8OfM_kDeXGmheKpFLuHaoMN9h7rM";
+    // webApiKey = "AIzaSyADY1P8OfM_kDeXGmheKpFLuHaoMN9h7rM";
 
     signUpUrl = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=";
 
@@ -28,7 +29,7 @@ export class AuthService {
     constructor(private http: HttpClient) { }
 
     signup(email: string, password: string) {
-        return this.http.post<AuthResponseData>(this.signUpUrl + this.webApiKey,
+        return this.http.post<AuthResponseData>(this.signUpUrl + environment.firebaseAPIKey,
             {
                 email: email,
                 password: password,
@@ -73,7 +74,7 @@ export class AuthService {
     }
 
     login(email: string, password: string) {
-        return this.http.post<AuthResponseData>(this.loginUrl + this.webApiKey,
+        return this.http.post<AuthResponseData>(this.loginUrl + environment.firebaseAPIKey,
             {
                 email: email,
                 password: password,

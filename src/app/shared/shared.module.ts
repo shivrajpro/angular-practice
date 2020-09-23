@@ -4,7 +4,7 @@ import { DropDownDirective } from "./drop-down.directive";
 import { LoadingSpinnerComponent } from "./loading-spinner/loading-spinner.component";
 import { AlertComponent } from "./alert/alert.component";
 import { PlaceholderDirective } from "./placeholder/placeholder.directive";
-import { LoggingService } from '../logging.service';
+import { LoggingService } from '../services/logging.service';
 
 @NgModule({
     declarations: [

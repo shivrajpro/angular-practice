@@ -5,6 +5,7 @@ import { RecipeService } from "./recipes/services/recipe.service";
 import { DataStorageService } from "./services/data-storage.service";
 import { AuthService } from "./auth/auth.service";
 import { AuthInterceptorService } from "./auth/auth-interceptor.service";
+import { LoggingService } from './logging.service';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { AuthInterceptorService } from "./auth/auth-interceptor.service";
           provide: HTTP_INTERCEPTORS,
           useClass: AuthInterceptorService,
           multi: true
-        }
+        },
+        // LoggingService
     ]
 })
 export class CoreModule{

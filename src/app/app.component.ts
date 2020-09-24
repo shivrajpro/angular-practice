@@ -32,8 +32,15 @@ import { Component } from '@angular/core';
         transform:'translateX(0) scale(0.5)'
       })),
       transition('normal <=> highlighted', animate(300)),
-      transition('shrunken <=> *', animate(800)),// *  is wildcard to state shrunken to any
-      // transition('highlighted => normal', animate(800))
+      transition('shrunken <=> *', [
+        style({
+          'background-color':'orange'
+        }),
+        animate(1000, style({
+          borderRadius:'50px'
+        })),
+        animate(500)
+      ])// *  is wildcard to state shrunken to any
     ])
   ]
 })
@@ -49,7 +56,7 @@ export class AppComponent {
     } 
 
     onShrink() {
-      this.wild == 'shrunken' ? this.wild = 'normal': this.wild = 'shrunken';
+      this.wild = 'shrunken';// ? this.wild = 'normal': this.wild = 'shrunken';
     }
     onAdd(item) {
       this.list.push(item);

@@ -1,24 +1,20 @@
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { ShortenPipe } from "./shorten.pipe";
+
 import { AppComponent } from './app.component';
-import { CoreModule } from "./core.module";
-import { HeaderComponent } from "./header/header.component";
-import { LoggingService } from './services/logging.service';
-import { SharedModule } from "./shared/shared.module";
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    ShortenPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    SharedModule,
-    CoreModule
+    FormsModule,
   ],
   bootstrap: [AppComponent],
   // providers:[LoggingService]

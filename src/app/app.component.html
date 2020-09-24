@@ -1,26 +1,39 @@
-<app-header></app-header>
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <input type="text" [(ngModel)]="filterStatus" /> <br>
-      <button class="btn btn-primary" (click)="onAddServer()">Add Server</button>
-      <br>
-      <h2>App Status : {{appStatus | async}} </h2>
+    <div class="col-xs-12">
+      <h1>Animations</h1>
+      <button class="btn btn-primary">Animate!</button>
+      <button class="btn btn-primary">Shrink!</button>
+      <hr>
+      <div></div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <input type="text" #input>
+      <button class="btn btn-primary" (click)="onAdd(input.value)">Add Item!</button>
       <hr>
       <ul class="list-group">
         <li
           class="list-group-item"
-          *ngFor="let server of servers | filter:filterStatus:'status'"
-          [ngClass]="getStatusClasses(server)">
-          <span
-            class="badge">
-            {{ server.status }}
-          </span>
-          <strong>{{ server.name | shorten:15 }}</strong>
-          | {{ server.instanceType | uppercase }}
-          | {{ server.started | date: 'fullDate'| uppercase }}
+          (click)="onDelete(item)"
+          *ngFor="let item of list">
+          {{ item }}
         </li>
       </ul>
     </div>
   </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          (click)="onDelete(item)"
+          *ngFor="let item of list">
+          {{ item }}
+        </li>
+      </ul>
+    </div>
 </div>

@@ -1,21 +1,63 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-import { Post } from './post.model';
+import { AuthService } from './auth/auth.service';
+import { LoggingService } from "./services/logging.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  posts: Post[] = [];
+export class AppComponent {
 
-  constructor(private http: HttpClient) {}
+  appStatus = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+      resolve('stable');
+    },2000);
+  });
 
-  ngOnInit() {
-    this.http
-      .get<Post[]>('https://jsonplaceholder.typicode.com/posts')
-      .subscribe(fetchedPosts => (this.posts = fetchedPosts));
+  servers = [
+    {
+      instanceType: 'medium',
+      name: 'Production Server',
+      status: 'stable',
+      started: new Date(15, 1, 2017)
+    },
+    {
+      instanceType: 'large',
+      name: 'User Database',
+      status: 'stable',
+      started: new Date(15, 1, 2017)
+    },
+    {
+      instanceType: 'small',
+      name: 'Development Server',
+      status: 'offline',
+      started: new Date(15, 1, 2017)
+    },
+    {
+      instanceType: 'small',
+      name: 'Testing Environment Server',
+      status: 'stable',
+      started: new Date(15, 1, 2017)
+    }
+  ];
+
+  filterStatus: string = '';
+
+  onAddServer() {
+    this.servers.push({
+      instanceType: "medium",
+      name: "Network Server",
+      status: "stable",
+      started: new Date(16, 1, 2018)
+    });
+  }
+
+  getStatusClasses(server: { instanceType: string, name: string, status: string, started: Date }) {
+    return {
+      'list-group-item-success': server.status === 'stable',
+      'list-group-item-warning': server.status === 'offline',
+      'list-group-item-danger': server.status === 'critical'
+    };
   }
 }

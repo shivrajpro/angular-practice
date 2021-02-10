@@ -15,10 +15,6 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         children:[
           {
-            path: '',
-            component: RecipeStartComponent
-          },
-          {
             path: 'new',
             component: RecipeEditComponent
           },

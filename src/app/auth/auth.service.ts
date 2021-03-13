@@ -93,6 +93,7 @@ export class AuthService {
 
     logout() {
         this.userChanged.next(null);
+        sessionStorage.removeItem("recipes")
         localStorage.removeItem('userData');
 
         if(!this.expirationTimer)

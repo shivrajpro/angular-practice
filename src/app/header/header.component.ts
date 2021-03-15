@@ -22,6 +22,11 @@ export class HeaderComponent implements OnInit, OnDestroy{
                         subscribe(user=>{
                             // this.isAuthencticated = user ? true : false;
                             this.isAuthencticated = !!user;
+
+                            if (!this.isAuthencticated) {
+                                console.log('session expired');
+                                this.router.navigateByUrl("/login");
+                            }
                             // console.log("user = ",user);
                             // console.log("!user = ",!user);
                         });

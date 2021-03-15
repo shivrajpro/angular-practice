@@ -28,6 +28,7 @@ export class AuthService {
 
     constructor(private http: HttpClient) { }
 
+    // https://firebase.google.com/docs/reference/rest/auth#section-create-email-password
     signup(email: string, password: string) {
         return this.http.post<AuthResponseData>(this.signUpUrl + environment.firebaseAPIKey,
             {
@@ -73,6 +74,7 @@ export class AuthService {
 
     }
 
+    // https://firebase.google.com/docs/reference/rest/auth#section-sign-in-email-password
     login(email: string, password: string) {
         return this.http.post<AuthResponseData>(this.loginUrl + environment.firebaseAPIKey,
             {

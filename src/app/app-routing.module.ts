@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'recipes',
-    pathMatch: 'full'
+    pathMatch: 'full'// because '' is part of every route
   },
   {
     path:'recipes',

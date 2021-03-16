@@ -8,6 +8,10 @@ import { RecipeService } from '../services/recipe.service';
   templateUrl: './recipe-start.component.html',
   styleUrls: ['./recipe-start.component.css']
 })
+/**
+ * this is the component that gets rendered when we hit recipes URL
+ * embedded in recipe-routing module
+ */
 export class RecipeStartComponent implements OnInit {
   recipes: Recipe[] = [];
   recipesChangedSub: Subscription;

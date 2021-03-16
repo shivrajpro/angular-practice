@@ -34,6 +34,7 @@ export class DataStorageService {
         .pipe(
             map(recipes => {
                 return recipes.map(recipe => {
+                    //if ingredients prop is undefined then set it to []
                     return {
                         ...recipe,
                         ingredients: recipe.ingredients ? recipe.ingredients : []

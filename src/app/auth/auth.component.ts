@@ -20,9 +20,10 @@ export class AuthComponent implements OnDestroy {
     isLoading: boolean = false;
     error = null;
 
+    //dynamic components concept. the components which are created programmatically
     @ViewChild(PlaceholderDirective, {static: false}) alertHost: PlaceholderDirective;
 
-    closeSub: Subscription;
+    closeSub: Subscription; //for closing the popup
 
     constructor(private authService: AuthService,
                 private router: Router,

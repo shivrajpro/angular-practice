@@ -6,6 +6,12 @@ import { exhaustMap, take } from "rxjs/operators";
 import { AuthService } from "./auth.service";
 
 @Injectable({providedIn:'root'})
+/**
+ * interceptors are used to modify the requests before executing them
+ * it can be adding a same paramter to all the APIs
+ * it can be adding header parameters to all the outgoing requests
+ * registered in providers array of the module with 3 params : provide, useClass and multi
+ */
 export class AuthInterceptorService implements HttpInterceptor {
 
     constructor(private authService: AuthService) { }

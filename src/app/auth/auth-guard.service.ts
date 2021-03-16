@@ -6,6 +6,11 @@ import { map, take, tap } from "rxjs/operators";
 import { AuthService } from "./auth.service";
 
 @Injectable({providedIn:'root'})
+/**
+ * Guards are used to protect out routes
+ * this piece of code runs before rendering a particular component
+ * which is configured in routing module
+ */
 export class AuthGuard implements CanActivate{
 
     constructor(private authService: AuthService,

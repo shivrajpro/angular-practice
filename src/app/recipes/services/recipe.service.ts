@@ -47,21 +47,12 @@ export class RecipeService {
   }
 
 
-  getRecipes() {
-    const recipes:Recipe[] = JSON.parse(sessionStorage.getItem("recipes"));
-
-    if(recipes && recipes.length>0){
-      this.recipes = recipes.slice();
-      return this.recipes.slice();
-    }
-    
+  getRecipes() {   
     return this.recipes.slice();
   }
 
   setRecipes(recipes: Recipe[]) {
     this.recipes = recipes;
-
-    sessionStorage.setItem("recipes", JSON.stringify(this.recipes));
     this.recipesChanged.next(this.recipes.slice());
   }
 

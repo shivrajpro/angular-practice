@@ -37,6 +37,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
     }
 
     onFetchData(){
+        // as we have added a resolver, we need to subscribe here
         this.dsService.fetchRecipes().subscribe();
     }
 

@@ -13,6 +13,7 @@ const routes: Routes = [
         path: '',//coz recipes is present in app-routing.module
         component: RecipesComponent,
         canActivate: [AuthGuard],
+        resolve: [RecipeResolverService],
         children:[
           {
             path: '',

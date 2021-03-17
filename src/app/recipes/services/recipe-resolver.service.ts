@@ -8,6 +8,10 @@ import { RecipeService } from './recipe.service';
 @Injectable({
     providedIn:'root'
 })
+/**
+ * a code that is run before a route is loaded
+ * 
+ */
 export class RecipeResolverService implements Resolve<Recipe[]>{
     
     constructor(private dsService: DataStorageService, private recipeService: RecipeService){}

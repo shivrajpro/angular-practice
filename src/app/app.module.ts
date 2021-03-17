@@ -13,7 +13,7 @@ import { SharedModule } from "./shared/shared.module";
     HeaderComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,// for using ngIf, ngFor, etc.
     AppRoutingModule,
     HttpClientModule,
     SharedModule,

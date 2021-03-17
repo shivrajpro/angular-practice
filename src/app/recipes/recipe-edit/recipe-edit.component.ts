@@ -79,7 +79,9 @@ export class RecipeEditComponent implements OnInit {
 
   }
 
+  // this need for Ahead of Time compiler to understand
   getRecipeIngredients() { // a getter!
+    // typecasting in TS
     return (<FormArray>this.recipeForm.get('ingredients')).controls;
   }
 

@@ -18,6 +18,8 @@ import { LoggingService } from '../services/logging.service';
             }
         ])       
     ],
+    // inject loggingService here and in core.module
+    // shoppingList module will have separate copy and app.module will have a separate
     // providers:[LoggingService]
 
 })

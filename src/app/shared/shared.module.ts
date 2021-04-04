@@ -5,6 +5,7 @@ import { LoadingSpinnerComponent } from "./loading-spinner/loading-spinner.compo
 import { AlertComponent } from "./alert/alert.component";
 import { PlaceholderDirective } from "./placeholder/placeholder.directive";
 import { LoggingService } from '../services/logging.service';
+import { NameFilterPipe } from "../shared/pipes/name-filter.pipe";
 
 @NgModule({
     //an element can be a part of declarations array of ONLY ONE component
@@ -15,6 +16,7 @@ import { LoggingService } from '../services/logging.service';
         LoadingSpinnerComponent,
         AlertComponent,
         PlaceholderDirective,
+        NameFilterPipe
     ],
     imports:[CommonModule],
     // since we are using below features outside this module, we need to export them
@@ -23,6 +25,7 @@ import { LoggingService } from '../services/logging.service';
         LoadingSpinnerComponent,
         AlertComponent,
         PlaceholderDirective,
+        NameFilterPipe,
         CommonModule //need this for ngIf, ngFor to work, as we can use BrowserModule only once
     ],
     providers:[LoggingService]

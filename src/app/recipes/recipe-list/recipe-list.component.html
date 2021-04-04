@@ -5,10 +5,12 @@
     </div>
 </div>
 <hr>
+<input class="form-control" type="text" [(ngModel)]="recipeName"  placeholder="type a recipe name" >
+<br>
 <div class="row">
     <div class="col-xs-12">
         <app-recipe-item
-            *ngFor="let recipeItem of recipes; let i = index"
+            *ngFor="let recipeItem of recipes | nameFilter: recipeName; let i = index"
             [recipe]="recipeItem"
             [index]="i"
         ></app-recipe-item>

@@ -41,7 +41,8 @@ export class ShoppingEditComponent implements OnInit {
     const newIngredient = new Ingredient(ingName, ingAmount);
 
     if(this.editMode)
-      this.shoppingListService.updateIngrediemt(this.editItemIndex, newIngredient);
+      this.store.dispatch(new ShoppingListActions.UpdateIngredient({index: this.editItemIndex, inrgedient: newIngredient}))
+      // this.shoppingListService.updateIngrediemt(this.editItemIndex, newIngredient);
     else
       this.store.dispatch(new ShoppingListActions.AddIngredient(newIngredient));
       //expects an object of ShoppingListActions

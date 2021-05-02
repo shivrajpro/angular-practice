@@ -1,0 +1,11 @@
+Steps to implement NgRx:
+1. Create actions file and add class for AddItem action which implements Action interface
+2. Create a reducer which will be responsible for the state change
+    A function that takes two arguments: state and Action
+    In this, default state will be the initial state of the app
+3. Add StoreModule in app.module and pass the reducer function to it
+4. In our components/services inject the store dependency of type Store which takes a generic data
+5. To initialize the data of our component with initial state
+   use the select method on this store which returns an Observable
+6. Use async pipe in template to subscribe and get the data automatically
+7. To perform new actions like add/update/delete use the dispatch method on store

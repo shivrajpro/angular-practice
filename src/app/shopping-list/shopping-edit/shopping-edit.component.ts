@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Ingredient } from 'src/app/shared/Ingredient.model';
-import { ShoppingListService } from '../services/shopping-list.service';
 import { NgForm } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { Ingredient } from 'src/app/shared/Ingredient.model';
+import * as fromApp from "../../store/app.reducer";
+import { ShoppingListService } from '../services/shopping-list.service';
 import * as ShoppingListActions from "../store/shoppingList.actions";
-import * as fromShoppingList from "../store/shoppingList.reducer";
 
 @Component({
   selector: 'app-shopping-edit',
@@ -20,7 +20,7 @@ export class ShoppingEditComponent implements OnInit {
   editingItem: Ingredient;
 
   constructor(private shoppingListService: ShoppingListService,
-    private store: Store<fromShoppingList.AppState>) { }
+    private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
 

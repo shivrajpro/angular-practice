@@ -5,11 +5,15 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
+import { WrapperComponent } from './demo/wrapper/wrapper.component';
+import { SmartComponent } from './demo/smart/smart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent
+    UserComponent,
+    WrapperComponent,
+    SmartComponent
   ],
   imports: [
     BrowserModule,

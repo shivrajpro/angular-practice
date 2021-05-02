@@ -5,6 +5,7 @@ import { Ingredient } from 'src/app/shared/Ingredient.model';
 import { ShoppingListService } from 'src/app/shopping-list/services/shopping-list.service';
 import { Store } from '@ngrx/store';
 import * as ShoppingListActions from "../../shopping-list/store/shoppingList.actions";
+import * as fromShoppingList from "../../shopping-list/store/shoppingList.reducer";
 
 @Injectable()
 export class RecipeService {
@@ -44,7 +45,7 @@ export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
   recipeSelected = new EventEmitter<Recipe>();
 
-  constructor(private slService: ShoppingListService, private slStore:Store<{shoppingList:{ingredients: Ingredient[]}}>) {
+  constructor(private slService: ShoppingListService, private slStore:Store<fromShoppingList.AppState>) {
 
   }
 

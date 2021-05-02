@@ -20,13 +20,13 @@ export class ShoppingEditComponent implements OnInit {
   editingItem: Ingredient;
 
   constructor(private shoppingListService: ShoppingListService,
-              private store: Store<fromShoppingList.AppState>) { }
+    private store: Store<fromShoppingList.AppState>) { }
 
   ngOnInit(): void {
 
     // with NgRx
-    this.store.select('shoppingList').subscribe(stateData=>{
-      if(stateData.editedIngredientIndex > -1){
+    this.store.select('shoppingList').subscribe(stateData => {
+      if (stateData.editedIngredientIndex > -1) {
         this.editMode = true;
         this.editItemIndex = stateData.editedIngredientIndex;
         this.editingItem = stateData.editedIngredient;
@@ -36,7 +36,7 @@ export class ShoppingEditComponent implements OnInit {
           'amount': this.editingItem.amount
         });
 
-      }else{
+      } else {
         this.editMode = false;
       }
     })
@@ -61,25 +61,25 @@ export class ShoppingEditComponent implements OnInit {
     const ingAmount = value.amount;
     const newIngredient = new Ingredient(ingName, ingAmount);
 
-    if(this.editMode)
-      this.store.dispatch(new ShoppingListActions.UpdateIngredient({index: this.editItemIndex, inrgedient: newIngredient}))
-      // this.shoppingListService.updateIngrediemt(this.editItemIndex, newIngredient);
+    if (this.editMode)
+      this.store.dispatch(new ShoppingListActions.UpdateIngredient(newIngredient))
+    // this.shoppingListService.updateIngrediemt(this.editItemIndex, newIngredient);
     else
       this.store.dispatch(new ShoppingListActions.AddIngredient(newIngredient));
-      //expects an object of ShoppingListActions
-      // this.shoppingListService.addIngredient(newIngredient);
+    //expects an object of ShoppingListActions
+    // this.shoppingListService.addIngredient(newIngredient);
     // this.ingredientAdded.emit(newIngredient);
     this.slForm.reset();
     this.editMode = false;
   }
 
-  onDeleteItem(){
-    this.store.dispatch(new ShoppingListActions.DeleteIngredient({index: this.editItemIndex}))
+  onDeleteItem() {
+    this.store.dispatch(new ShoppingListActions.DeleteIngredient())
     this.onClear();
     // this.shoppingListService.deleteIngredient(this.editItemIndex);
   }
 
-  onClear(){
+  onClear() {
     this.slForm.reset();
     this.editMode = false;
   }

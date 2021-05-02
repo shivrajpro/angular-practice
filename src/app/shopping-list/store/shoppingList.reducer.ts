@@ -36,19 +36,21 @@ export function shoppingListReducer(state: State = initialState, action: Shoppin
             };
 
         case ShoppingListActions.UPDATE_INGREDIENT:
-            const ingredient = state.ingredients[action.payload.index];
+            const ingredient = state.ingredients[state.editedIngredientIndex];
 
             const updatedIngredient = {
                 ...ingredient,
-                ...action.payload.inrgedient
+                ...action.payload
             }
 
             const updatedIngredients = [...state.ingredients];
-            updatedIngredients[action.payload.index] = updatedIngredient;
+            updatedIngredients[state.editedIngredientIndex] = updatedIngredient;
 
             return {
                 ...state,
-                ingredients: updatedIngredients
+                ingredients: updatedIngredients,
+                editedIngredientIndex: -1,
+                editedIngredient: null
             };
 
         case ShoppingListActions.START_EDIT:
@@ -58,17 +60,22 @@ export function shoppingListReducer(state: State = initialState, action: Shoppin
                 editedIngredientIndex: action.payload
             };
 
+
         case ShoppingListActions.STOP_EDIT:
-            return{
+            return {
                 ...state,
-                editedIngredient:null,
+                editedIngredient: null,
                 editedIngredientIndex: -1
             };
+
         case ShoppingListActions.DELETE_INGREDIENT:
-            return{
+            return {
                 ...state,
-                ingredients: state.ingredients.filter((ing,ingIndex)=>ingIndex!=action.payload.index)
+                ingredients: state.ingredients.filter((ing, ingIndex) => ingIndex != state.editedIngredientIndex),
+                editedIngredientIndex: -1,
+                editedIngredient: null
             };
+
         default:
             return state;
     }

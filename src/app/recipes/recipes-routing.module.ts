@@ -16,10 +16,6 @@ const routes: Routes = [
         resolve: [RecipeResolverService],
         children:[
           {
-            path: '',
-            component: RecipeStartComponent
-          },
-          {
             path: 'new',
             component: RecipeEditComponent
           },

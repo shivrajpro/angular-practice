@@ -1,4 +1,16 @@
-# MyApp
+# RecipeBook
+
+This project is developed to understand and demonstrate all the core and important features of google's Angular Framework. The features include modules, components, directives, pipes, routing, services, and others.
+
+Used reactive forms for building RecipeEditComponent and template-driven forms at other places like login and shopping list
+
+Used RxJS to deal with asynchronous data calls, callbacks and event-based programs
+
+For user authentication and authorization I have used the firebase service. Only authorized users can fetch and store the recipes. Have used route guards for protecting the routes. The user does not need to log in every time he/she refreshes the page as the session is maintained for one hour after which the user logs out automatically.
+
+For storing data I have used a firebase real-time database. Also, this app is hosted using firebase hosting service at https://ng-course-recipe-book-5ad9f.web.app/
+Feel free to play with it.
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.8.
 

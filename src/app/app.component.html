@@ -1,18 +1,21 @@
-<h1>
+<!-- <h1>
   {{title}}
-</h1>
+</h1> -->
 <!-- ng-content vs ng-container vs ng-template-->
 <!-- <app-smart></app-smart> -->
-<div class="container">
-  <p>Outside ng-container</p>
-  <ng-container>
-    <p>Inside ng-container</p>
-  </ng-container>
+<!-- <p>Outside ng-container</p> -->
+<ng-container>
+  <!-- <p>Inside ng-container</p> -->
+</ng-container>
 
-  <div>
-    <p>outside ng-template</p>
-    <ng-template>
-      <p>inside ng-template</p>
-    </ng-template>
-  </div>
+<div>
+  <!-- <p>outside ng-template</p> -->
+  <ng-template>
+    <!-- <p>inside ng-template</p> -->
+  </ng-template>
+</div>
+
+
+<div class="container">
+  <app-operators></app-operators>
 </div>

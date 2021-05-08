@@ -1,12 +1,17 @@
-<app-header></app-header>
+<h1>
+  {{title}}
+</h1>
+<!-- <app-smart></app-smart> -->
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <router-outlet></router-outlet>
-<!-- 
-            <app-recipes *ngIf="loadedFeature === 'recipe'"></app-recipes>
-            <app-shopping-list *ngIf="loadedFeature !== 'recipe'"></app-shopping-list>
- -->
-        </div>
-    </div>
+  <p>Outside ng-container</p>
+  <ng-container>
+    <p>Inside ng-container</p>
+  </ng-container>
+  
+  <div>
+    <p>outside ng-template</p>
+    <ng-template>
+      <p>inside ng-template</p>
+    </ng-template>
+  </div>
 </div>

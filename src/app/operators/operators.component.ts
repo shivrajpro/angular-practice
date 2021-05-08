@@ -1,5 +1,12 @@
 import { Component, OnInit } from "@angular/core";
-import { of, Observable, from } from "rxjs";
+import { of, 
+    Observable, 
+    from, 
+    Subject, 
+    AsyncSubject,
+    ReplaySubject,
+    BehaviorSubject } from "rxjs";
+
 import { delay, map, filter } from "rxjs/operators";
 
 interface IEmployee {
@@ -32,10 +39,119 @@ export class OperatorsCompnent implements OnInit {
     constructor() { }
 
     ngOnInit(): void {
-        // of([1, 2, 3]).subscribe(x => console.log('>> of', x));
+        // this.launchDemo1();
+
+        // this.demoBehaviorSubject();
+        
+        // this.demoNormalSubject();
+
+        // this.demoReplaySubject();
+
+        // this.demoAsyncSubject();
+    }
+
+    demoAsyncSubject() {
+        const asyncSub = new AsyncSubject<string>();
+
+        asyncSub.next('first emit');
+        asyncSub.next('second emit');
+        asyncSub.next('third emit');
+        asyncSub.next('fourth emit');
+
+        asyncSub.subscribe((d) => {
+            console.log('>> AAAA', d);
+        });
+
+        asyncSub.next('1st emit after 1st subscription');
+        asyncSub.next('2nd emit after 1st subscription');
+        asyncSub.next('3rd emit after 1st subscription');
+
+        asyncSub.subscribe((d) => {
+            console.log('>> BBBB', d);
+        });
+
+        asyncSub.next('1st emit after 2nd subscription');
+        asyncSub.next('2nd emit after 2nd subscription');
+        asyncSub.next('3rd emit after 2nd subscription');
+
+        asyncSub.complete();
+    }
+
+    demoReplaySubject() {
+        const replaySub = new ReplaySubject(2);
+
+        replaySub.next('first emit');
+        replaySub.next('second emit');
+        // above data gets printed only if n value is > 1 
+        replaySub.next('third emit');
+
+        replaySub.subscribe((d) => {
+            console.log('>> AAAA', d);
+        });
+
+        replaySub.next('1st emit after first subscription');
+        replaySub.next('2nd emit after first subscription');
+        replaySub.next('3rd emit after first subscription');
+
+        replaySub.subscribe((d) => {
+            console.log('>> BBBB', d);
+        });
+
+        replaySub.next('after second subscription');
+
+        replaySub.next('last emit');
+    }
+
+    demoNormalSubject() {
+        const normalSub = new Subject<string>();
+
+        normalSub.next('before subscribing normal subject');
+
+        normalSub.subscribe((d) => {
+            console.log('>> normal subject AAAA', d);
+        });
+
+        normalSub.next('after first subscription');
+
+        normalSub.subscribe((d) => {
+            console.log('>> normal subject BBBBBB', d);
+        });
+
+        normalSub.next('after second subscription');
+
+        normalSub.next('the last emit in normal subject');
+    }
+
+    demoBehaviorSubject() {
+        const behavSub = new BehaviorSubject<string>('default');
+
+        behavSub.next('first emit');
+        behavSub.next('second emit');
+        behavSub.next('third emit');
+
+        behavSub.subscribe((d) => {
+            console.log('>> BehaviorSubject AAAAA', d);
+        });
+
+        behavSub.next('after first subscription');
+
+        behavSub.subscribe((d) => {
+            console.log('>> BehaviorSubject BBBBBB', d);
+        });
+
+        behavSub.next('after second subscription');
+    }
+
+    getEmployees(): Observable<IEmployee[]> {
+        // of() converts the arguments to an observable sequence. used for mocking data
+        return of(this.employees).pipe(delay(0));
+    }
+
+    launchDemo1(){
+        of([1, 2, 3]).subscribe(x => console.log('>> of', x));
         // would print the whole array at once
 
-        // from([1, 2, 3]).subscribe(x => console.log('>> from', x));
+        from([1, 2, 3]).subscribe(x => console.log('>> from', x));
         // prints the elements one by one
 
         this.employeeListObs = this.getEmployees();
@@ -88,11 +204,5 @@ export class OperatorsCompnent implements OnInit {
         }, () => console.log('>> custom obs completed')
         )
 
-
-    }
-
-    getEmployees(): Observable<IEmployee[]> {
-        // of() converts the arguments to an observable sequence. used for mocking data
-        return of(this.employees).pipe(delay(0));
     }
 }

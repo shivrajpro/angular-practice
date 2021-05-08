@@ -1,16 +1,17 @@
 import { Component, OnInit } from "@angular/core";
 import {
     of,
-    Observable,
     from,
-    forkJoin,
     Subject,
+    interval,
+    forkJoin,
+    Observable,
     AsyncSubject,
     ReplaySubject,
     BehaviorSubject
 } from "rxjs";
 
-import { delay, map, filter } from "rxjs/operators";
+import { delay, map, filter, take, tap } from "rxjs/operators";
 
 interface IEmployee {
     id: number,
@@ -54,11 +55,35 @@ export class OperatorsCompnent implements OnInit {
 
         // this.promiseAndObs();
 
-        this.demoForkJoin();
+        const obs = interval(1000);
+
+        obs.pipe(take(4)).subscribe((d) => {
+            console.log('>> take d', d);
+        })
+
+
+        const list1 = of(1, 2, 3, 4, 5, 6);
+
+        const filteredObs = list1.pipe(
+            // takes on observer
+            tap((d)=>{
+                console.log('>> from tap',d);
+            }),
+            filter((d)=> d%2 === 0)
+        )
+
+        list1.subscribe((d)=>{
+            console.log('>> from list1 subscribe',d);
+        });
+
+        filteredObs.subscribe((d)=>{
+            console.log('>> from filteredObs subscribe',d);
+        })
+        // this.demoForkJoin();
     }
 
     demoForkJoin() {
-        const stringObs = of('abc').pipe(delay(2000));
+        const stringObs = of('abc', 'def').pipe(delay(2000));
         const numberObs = of(1);
 
         // order of values is preserved

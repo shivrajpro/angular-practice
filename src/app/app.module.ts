@@ -1,12 +1,11 @@
-import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-
-
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
-import { WrapperComponent } from './demo/wrapper/wrapper.component';
 import { SmartComponent } from './demo/smart/smart.component';
+import { WrapperComponent } from './demo/wrapper/wrapper.component';
+import { UserComponent } from './user/user.component';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +15,8 @@ import { SmartComponent } from './demo/smart/smart.component';
     SmartComponent
   ],
   imports: [
- 
+    BrowserModule,
+    AppRoutingModule
   ],
   bootstrap: [AppComponent],
   // providers:[LoggingService]

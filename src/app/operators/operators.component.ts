@@ -1,11 +1,14 @@
 import { Component, OnInit } from "@angular/core";
-import { of, 
-    Observable, 
-    from, 
-    Subject, 
+import {
+    of,
+    Observable,
+    from,
+    forkJoin,
+    Subject,
     AsyncSubject,
     ReplaySubject,
-    BehaviorSubject } from "rxjs";
+    BehaviorSubject
+} from "rxjs";
 
 import { delay, map, filter } from "rxjs/operators";
 
@@ -42,12 +45,55 @@ export class OperatorsCompnent implements OnInit {
         // this.launchDemo1();
 
         // this.demoBehaviorSubject();
-        
+
         // this.demoNormalSubject();
 
         // this.demoReplaySubject();
 
         // this.demoAsyncSubject();
+
+        // this.promiseAndObs();
+
+        this.demoForkJoin();
+    }
+
+    demoForkJoin() {
+        const stringObs = of('abc').pipe(delay(2000));
+        const numberObs = of(1);
+
+        // order of values is preserved
+        forkJoin([stringObs, numberObs]).subscribe((d) => {
+            console.log('>> d', d);
+        });
+
+        forkJoin({
+            forString: stringObs,
+            forNumbers: numberObs
+        }).subscribe((d) => {
+            console.log('>> d', d);
+        });
+
+        Promise.all([
+            Promise.resolve(3),
+            new Promise((resolve, reject) => setTimeout(resolve, 3000, 'foo')),
+            42
+        ]).then(values => console.log(values));
+    }
+
+    promiseAndObs() {
+        const myPromise = of([1, 2, 3]).toPromise();
+
+        console.log('>> myPromise', myPromise);
+        myPromise.then((d) => {
+            console.log('>> Promise', d);
+        });
+
+        const obs = from(myPromise);
+
+        obs.subscribe((d) => {
+            console.log('>> Observable', d);
+
+        });
     }
 
     demoAsyncSubject() {
@@ -147,7 +193,7 @@ export class OperatorsCompnent implements OnInit {
         return of(this.employees).pipe(delay(0));
     }
 
-    launchDemo1(){
+    launchDemo1() {
         of([1, 2, 3]).subscribe(x => console.log('>> of', x));
         // would print the whole array at once
 

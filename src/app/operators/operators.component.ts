@@ -13,7 +13,12 @@ import {
 
 import { delay, map, filter, take, tap } from "rxjs/operators";
 
-interface IEmployee {
+interface Person{
+    username:string,
+    email: string
+}
+
+interface IEmployee extends Person {
     id: number,
     username: string,
     email: string
@@ -55,31 +60,36 @@ export class OperatorsCompnent implements OnInit {
 
         // this.promiseAndObs();
 
+        // this.takeAndTap();
+        
+        // this.demoForkJoin();
+    }
+
+    takeAndTap() {
         const obs = interval(1000);
 
         obs.pipe(take(4)).subscribe((d) => {
             console.log('>> take d', d);
-        })
+        });
 
 
         const list1 = of(1, 2, 3, 4, 5, 6);
 
         const filteredObs = list1.pipe(
             // takes on observer
-            tap((d)=>{
-                console.log('>> from tap',d);
+            tap((d) => {
+                console.log('>> from tap', d);
             }),
-            filter((d)=> d%2 === 0)
-        )
+            filter((d) => d % 2 === 0)
+        );
 
-        list1.subscribe((d)=>{
-            console.log('>> from list1 subscribe',d);
+        list1.subscribe((d) => {
+            console.log('>> from list1 subscribe', d);
         });
 
-        filteredObs.subscribe((d)=>{
-            console.log('>> from filteredObs subscribe',d);
-        })
-        // this.demoForkJoin();
+        filteredObs.subscribe((d) => {
+            console.log('>> from filteredObs subscribe', d);
+        });
     }
 
     demoForkJoin() {

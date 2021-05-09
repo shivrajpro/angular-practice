@@ -4,16 +4,14 @@ import { FormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
-import { WrapperComponent } from './demo/wrapper/wrapper.component';
-import { SmartComponent } from './demo/smart/smart.component';
+import { CockpitComponent } from './cockpit/cockpit.component';
+import { ServerElementComponent } from './server-element/server-element.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
-    WrapperComponent,
-    SmartComponent
+    CockpitComponent,
+    ServerElementComponent
   ],
   imports: [
     BrowserModule,

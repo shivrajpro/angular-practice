@@ -1,22 +1,12 @@
-<!-- <h1>
-  {{title}}
-</h1> -->
-<!-- ng-content vs ng-container vs ng-template-->
-<!-- <app-smart></app-smart> -->
-<!-- <p>Outside ng-container</p> -->
-<ng-container>
-  <!-- <p>Inside ng-container</p> -->
-</ng-container>
-
-<div>
-  <!-- <p>outside ng-template</p> -->
-  <ng-template>
-    <!-- <p>inside ng-template</p> -->
-  </ng-template>
-</div>
-
-
+<app-header></app-header>
 <div class="container">
-  <app-parent></app-parent>
-  <!-- <app-operators></app-operators> -->
+    <div class="row">
+        <div class="col-md-12">
+            <router-outlet></router-outlet>
+<!-- 
+            <app-recipes *ngIf="loadedFeature === 'recipe'"></app-recipes>
+            <app-shopping-list *ngIf="loadedFeature !== 'recipe'"></app-shopping-list>
+ -->
+        </div>
+    </div>
 </div>

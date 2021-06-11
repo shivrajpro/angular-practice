@@ -1,31 +1,28 @@
+import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from "./app-routing.module";
+import { StoreModule } from "@ngrx/store";
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SmartComponent } from './demo/smart/smart.component';
-import { WrapperComponent } from './demo/wrapper/wrapper.component';
-import { UserComponent } from './user/user.component';
-import { OperatorsCompnent } from "./operators/operators.component";
-import { ParentComponent } from './changedetection/parent/parent.component';
-import { Child1Component } from './changedetection/children/child1/child1.component';
-import { Child2Component } from './changedetection/children/child2/child2.component';
-
+import { CoreModule } from "./core.module";
+import { HeaderComponent } from "./header/header.component";
+import { LoggingService } from "./services/logging.service";
+import { SharedModule } from "./shared/shared.module";
+import * as fromApp from "./store/app.reducer";
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
-    WrapperComponent,
-    SmartComponent,
-    OperatorsCompnent,
-    ParentComponent,
-    Child1Component,
-    Child2Component
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    SharedModule,
+    CoreModule,
+    StoreModule.forRoot(fromApp.appReducer)
   ],
   bootstrap: [AppComponent],
-  // providers:[LoggingService]
+  providers:[LoggingService]
 })
 export class AppModule { }

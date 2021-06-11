@@ -1,15 +1,30 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'recipes',
+    pathMatch: 'full'
+  },
+  {
+    path:'recipes',
+    // loadChildren:'./recipes/recipes.module#RecipesModule'
+    loadChildren: ()=> import('./recipes/recipes.module').then(m=> m.RecipesModule)
+  },
+  {
+    path:'login',
+    loadChildren: ()=> import('./auth/auth.module').then(m=>m.AuthModule)
+  },
+  {
+    path: 'shopping-list',
+    // component: ShoppingListComponent
+    loadChildren: ()=> import('./shopping-list/shopping-list.module').then(m=>m.ShoppingListModule)
+  }
+];
 
 @NgModule({
-  // to optimize lazy loading
-  // when use lazy loading, there is a tiny delay  everytime a visit a route
-  // to load particular module. to avoid this,
-  // setting following property will preload the modules which will be needed later
-  // ofcourse the route which is hit first, is loaded first
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

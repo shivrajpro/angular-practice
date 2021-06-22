@@ -9,6 +9,7 @@ import { HeaderComponent } from "./header/header.component";
 import { LoggingService } from "./services/logging.service";
 import { SharedModule } from "./shared/shared.module";
 import * as fromApp from "./store/app.reducer";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import * as fromApp from "./store/app.reducer";
     HttpClientModule,
     SharedModule,
     CoreModule,
-    StoreModule.forRoot(fromApp.appReducer)
+    StoreModule.forRoot(fromApp.appReducer),
+    BrowserAnimationsModule
   ],
   bootstrap: [AppComponent],
   providers:[LoggingService]

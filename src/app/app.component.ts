@@ -8,6 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   title: string = 'Angular Material';
   
+  showElements = {
+    "typography":false,
+    "buttons":true
+  }
+  
   constructor(){}
 
   ngOnInit(){

@@ -10,7 +10,8 @@ export class AppComponent implements OnInit{
   
   showElements = {
     "typography":false,
-    "buttons":true
+    "buttons":false,
+    "buttonToggle":true
   }
   
   constructor(){}

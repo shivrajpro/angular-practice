@@ -13,7 +13,8 @@ export class AppComponent implements OnInit{
     "buttons":false,
     "buttonToggle":false,
     "icons":false,
-    "badges":true
+    "badges":false,
+    "spinner":true
   }
   
   constructor(){}

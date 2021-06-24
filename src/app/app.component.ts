@@ -11,7 +11,8 @@ export class AppComponent implements OnInit{
   showElements = {
     "typography":false,
     "buttons":false,
-    "buttonToggle":true
+    "buttonToggle":false,
+    "icons":true
   }
   
   constructor(){}

@@ -48,7 +48,7 @@
 </div>
 
 <!-- button toggle -->
-<div>
+<div *ngIf="showElements.buttonToggle">
   <div>
     <mat-button-toggle #toggleBtn disableRipple checked>Toggle</mat-button-toggle>
     {{toggleBtn.checked}}
@@ -61,4 +61,9 @@
     </mat-button-toggle-group>
     {{toggleBtnGrp.value}}
   </div>
+</div>
+
+<!-- icons -->
+<div>
+  <mat-icon color="warn">home</mat-icon>
 </div>

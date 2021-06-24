@@ -1,19 +1,19 @@
 <!-- typography -->
-<div  *ngIf="showElements.typography">
+<div *ngIf="showElements.typography">
   <div class="mat-display-4">This is display 4</div>
   <div class="mat-display-3">This is display 3</div>
   <div class="mat-display-2">This is display 2</div>
   <div class="mat-display-1">This is display 1</div>
-  
+
   <div class="mat-headline">this is mat-headline h1</div>
   <div class="mat-title">this is mat-title h2</div>
   <div class="mat-subheading-2">this is mat-subheading-2 h3</div>
   <div class="mat-subheading-1">this is mat-subheading-1 h4</div>
-  
+
   <div class="mat-body-1">this is mat-body-1</div>
   <div class="mat-body-2">this is mat-body-2</div>
   <div class="mat-caption">this is mat-caption</div>
-  
+
   <div class="mat-typography">
     <h1>this is h1</h1>
     <h2>this is h2</h2>
@@ -64,6 +64,68 @@
 </div>
 
 <!-- icons -->
-<div>
+<div *ngIf="showElements.icons">
   <mat-icon color="warn">home</mat-icon>
+</div>
+
+<!-- badge -->
+<div *ngIf="showElements.badges">
+  <div>
+    <span>Example</span>
+    <button mat-button>
+      <mat-icon>notifications</mat-icon><span matBadge="2" [matBadgeHidden]="true"></span>
+    </button>
+    <button mat-button>
+      <mat-icon>messages</mat-icon><span matBadge="2"></span>
+    </button>
+  </div>
+  <!-- matBadgeSize="small|medium|large"-->
+  <div>
+    <span>Badge Size</span>
+    <button mat-button>
+      <mat-icon>notifications</mat-icon><span matBadge="2" matBadgeSize="small"></span>
+    </button>
+    <button mat-button>
+      <mat-icon>notifications</mat-icon><span matBadge="2" matBadgeSize="medium"></span>
+    </button>
+    <button mat-button>
+      <mat-icon>notifications</mat-icon><span matBadge="2" matBadgeSize="large"></span>
+    </button>
+  </div>
+
+  <!-- matBadgePosition -->
+  <div>
+    <span>Badge Position</span>
+    <button mat-button>
+      <mat-icon>notifications</mat-icon>
+      <span matBadge="2" matBadgeSize="medium" matBadgePosition="below before"></span>
+    </button>
+    <button mat-button>
+      <mat-icon>notifications</mat-icon>
+      <span matBadge="2" matBadgeSize="medium" matBadgePosition="below after"></span>
+    </button>
+    <button mat-button>
+      <mat-icon>notifications</mat-icon>
+      <span matBadge="2" matBadgeSize="medium" matBadgePosition="above before"></span>
+    </button>
+    <button mat-button>
+      <mat-icon>notifications</mat-icon>
+      <span matBadge="2" matBadgeSize="medium" matBadgePosition="above after"></span>
+    </button>
+  </div>
+
+  <!-- matBadgeColor -->
+  <div>
+    <span>Badge Color</span>
+    <button mat-button>
+      <mat-icon>notifications</mat-icon><span matBadge="2"></span>
+    </button>
+    <button mat-button>
+      <mat-icon>notifications</mat-icon><span matBadge="2" matBadgeColor="warn"></span>
+    </button>
+    <button mat-button>
+      <mat-icon>notifications</mat-icon><span matBadge="2" matBadgeColor="accent"></span>
+    </button>
+  </div>
+
 </div>

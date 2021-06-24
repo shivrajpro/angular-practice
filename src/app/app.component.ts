@@ -12,7 +12,8 @@ export class AppComponent implements OnInit{
     "typography":false,
     "buttons":false,
     "buttonToggle":false,
-    "icons":true
+    "icons":false,
+    "badges":true
   }
   
   constructor(){}

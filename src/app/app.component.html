@@ -195,3 +195,18 @@
     CodeEvolution
   </button>
 </div>
+
+<!-- grid list -->
+<div *ngIf="showElements.gridList">
+  <!-- <mat-grid-list cols="2" gutterSize="4" rowHeight="fit" style="height:200px" > -->
+  <!-- <mat-grid-list cols="2" gutterSize="4" rowHeight="200px" style="height:200px" > -->
+  <mat-grid-list cols="2" gutterSize="4" rowHeight="2:1" style="height:200px" >
+    <!-- colspan should not exceed cols -->
+    <!-- <mat-grid-tile colspan="2" >tile 1</mat-grid-tile> -->
+    <!-- <mat-grid-tile rowspan="2" >tile 1</mat-grid-tile> -->
+    <mat-grid-tile>tile 1</mat-grid-tile>
+    <mat-grid-tile>tile 2</mat-grid-tile>
+    <mat-grid-tile>tile 3</mat-grid-tile>
+    <mat-grid-tile>tile 4</mat-grid-tile>
+  </mat-grid-list>
+</div>

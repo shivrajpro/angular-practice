@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   title: string = 'Angular Material';
   
+  allUISkills = ["angular","react","vue"];
+  selectedUISkills = [];
   sideNavOpened = false;
 
   showElements = {
@@ -24,7 +26,8 @@ export class AppComponent implements OnInit{
     "expansion":false,
     "card":false,
     "tabs":false,
-    "stepper":true
+    "stepper":false,
+    "formField":true
   }
   
   constructor(){}
@@ -34,5 +37,22 @@ export class AppComponent implements OnInit{
 
   log(state){
     console.log('>> ',state);
+  }
+
+  uiSelectionChanged(selectedValues){
+    console.log('>> ',selectedValues);
+    
+  }
+
+  invertUISkills(){
+    const newSelectedSkills = [];
+
+    for (const skill of this.allUISkills) {
+      if(this.selectedUISkills.indexOf(skill) === -1)
+        newSelectedSkills.push(skill);
+    }
+
+    this.selectedUISkills = newSelectedSkills.slice();
+    console.log('>>selectedUISkills',this.selectedUISkills);
   }
 }

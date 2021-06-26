@@ -138,7 +138,7 @@
 
 <!-- toolbar -->
 <div *ngIf="showElements.toolbar">
-  <mat-toolbar color="primary" class="mat-navbar" >
+  <mat-toolbar color="primary" class="mat-navbar">
     <div>CodeEvolution</div>
     <div>
       <span>Home</span>
@@ -156,7 +156,8 @@
   <button (click)="sidenav.toggle()">toggle</button>
   <mat-sidenav-container>
     <!-- mode = "over/push/side" -->
-    <mat-sidenav (opened)="log('opened')" (closed)="log('closed')" #sidenav mode="side" [opened]="sideNavOpened">sidenav</mat-sidenav>
+    <mat-sidenav (opened)="log('opened')" (closed)="log('closed')" #sidenav mode="side" [opened]="sideNavOpened">sidenav
+    </mat-sidenav>
     <mat-sidenav-content>content</mat-sidenav-content>
   </mat-sidenav-container>
 </div>
@@ -176,22 +177,18 @@
   </mat-menu>
 
   <mat-menu #lazyMenu="matMenu">
-    <ng-template matMenuContent let-name="name" let-hobby="hobby" >
+    <ng-template matMenuContent let-name="name" let-hobby="hobby">
       <button mat-menu-item>Settings</button>
       <button mat-menu-item>Hobby is {{hobby}} </button>
       <button mat-menu-item>Log out {{name}} </button>
     </ng-template>
   </mat-menu>
 
-  <button mat-raised-button 
-  [matMenuTriggerData]="{'name':'Vishwas', 'hobby':'Cricket'}" 
-  [matMenuTriggerFor]="lazyMenu">
+  <button mat-raised-button [matMenuTriggerData]="{'name':'Vishwas', 'hobby':'Cricket'}" [matMenuTriggerFor]="lazyMenu">
     Vishwas
   </button>
-  <button mat-raised-button 
-  [matMenuTriggerFor]="lazyMenu"
-  [matMenuTriggerData]="{'name':'CodeEvolution', 'hobby':'Football'}" 
-  >
+  <button mat-raised-button [matMenuTriggerFor]="lazyMenu"
+    [matMenuTriggerData]="{'name':'CodeEvolution', 'hobby':'Football'}">
     CodeEvolution
   </button>
 </div>
@@ -200,7 +197,7 @@
 <div *ngIf="showElements.gridList">
   <!-- <mat-grid-list cols="2" gutterSize="4" rowHeight="fit" style="height:200px" > -->
   <!-- <mat-grid-list cols="2" gutterSize="4" rowHeight="200px" style="height:200px" > -->
-  <mat-grid-list cols="2" gutterSize="4" rowHeight="2:1" style="height:200px" >
+  <mat-grid-list cols="2" gutterSize="4" rowHeight="2:1" style="height:200px">
     <!-- colspan should not exceed cols -->
     <!-- <mat-grid-tile colspan="2" >tile 1</mat-grid-tile> -->
     <!-- <mat-grid-tile rowspan="2" >tile 1</mat-grid-tile> -->
@@ -242,42 +239,80 @@
   <mat-card>
     <mat-card-title>Card Title</mat-card-title>
     <mat-card-content>add some content in the card</mat-card-content>
-    <mat-card-actions align="end" >
+    <mat-card-actions align="end">
       <button mat-flat-button>Login</button>
     </mat-card-actions>
   </mat-card>
 </div>
 
 <!-- tabs -->
-<div *ngIf="showElements.tabs" >
+<div *ngIf="showElements.tabs">
   <mat-tab-group #tabRef (selectedTabChange)="log(tabRef)">
-    <mat-tab label="Angular" >Angular Content</mat-tab>
-    <mat-tab label="React" >React Content</mat-tab>
-    <mat-tab label="Vue" >Vue Content</mat-tab>
+    <mat-tab label="Angular">Angular Content</mat-tab>
+    <mat-tab label="React">React Content</mat-tab>
+    <mat-tab label="Vue">Vue Content</mat-tab>
   </mat-tab-group>
 </div>
 
 <!-- stepper -->
 <div *ngIf="showElements.stepper">
   <mat-horizontal-stepper linear>
-    <mat-step completed="true" label="Confirm Order" >review your order</mat-step>
-    <mat-step completed="false" optional label="Shipping Address" >enter your address
+    <mat-step completed="true" label="Confirm Order">review your order</mat-step>
+    <mat-step completed="false" optional label="Shipping Address">enter your address
       <div>
         <button mat-flat-button matStepperPrevious>Prev</button>
         <button mat-flat-button matStepperNext>Next</button>
       </div>
     </mat-step>
-    <mat-step completed="false" label="Payment" >complete your payment</mat-step>
+    <mat-step completed="false" label="Payment">complete your payment</mat-step>
   </mat-horizontal-stepper>
 
   <mat-vertical-stepper>
-    <mat-step completed="true" label="Delivered" >please write a review</mat-step>
-    <mat-step completed="false" optional label="Order Shipped" >order has left
+    <mat-step completed="true" label="Delivered">please write a review</mat-step>
+    <mat-step completed="false" optional label="Order Shipped">order has left
       <div>
         <button mat-flat-button matStepperPrevious>Prev</button>
         <button mat-flat-button matStepperNext>Next</button>
       </div>
     </mat-step>
-    <mat-step completed="false" label="Order Placed" >your order is confirmed</mat-step>
+    <mat-step completed="false" label="Order Placed">your order is confirmed</mat-step>
   </mat-vertical-stepper>
+</div>
+
+<!-- form and input -->
+<div *ngIf="showElements.formField" style="margin:10px">
+  <!-- floatLabel="auto, always, never" -->
+  <!-- appearance="legacy, standard, fill, outline" -->
+  <mat-form-field floatLabel="auto" hideRequiredMarker appearance="outline">
+    <mat-label>First Name</mat-label>
+    <input matInput required />
+    <mat-hint>min 5 characters</mat-hint>
+  </mat-form-field>
+
+  <!-- <button mat-flat-button (click)="selectedValue=['angular','react']" >Select Angular and React</button> -->
+  <button mat-flat-button (click)="invertUISkills()" >Invert Selection</button>
+  <mat-form-field>
+    <mat-label>FrontEnd</mat-label>
+    <mat-select multiple [(value)]="selectedUISkills" (selectionChange)="uiSelectionChanged(selectedUISkills)" >
+      <mat-option value="angular">Angular</mat-option>
+      <mat-option value="react">React</mat-option>
+      <mat-option value="vue">Vue</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Topic</mat-label>
+    <mat-select [(value)]="selectedValue" multiple (selectionChange)="log(selectedValue)">
+      <mat-option value="none">None</mat-option>
+      <mat-optgroup label="Web" >
+        <mat-option value="angular">Angular</mat-option>
+        <mat-option value="react">React</mat-option>
+        <mat-option value="vue">Vue</mat-option>
+      </mat-optgroup>
+      <mat-optgroup label="mobile">
+        <mat-option value="ionic">Ionic</mat-option>
+        <mat-option value="react native">React Native</mat-option>
+      </mat-optgroup>
+    </mat-select>
+  </mat-form-field>
+  selected topic is:{{selectedValue}}
 </div>

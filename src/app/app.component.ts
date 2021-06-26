@@ -20,7 +20,8 @@ export class AppComponent implements OnInit{
     "toolbar":true,
     "sidenav":false,
     "menu":false,
-    "gridList":true
+    "gridList":false,
+    "expansion":true
   }
   
   constructor(){}

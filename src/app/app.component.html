@@ -210,3 +210,29 @@
     <mat-grid-tile>tile 4</mat-grid-tile>
   </mat-grid-list>
 </div>
+
+<!-- expansion panel -->
+<div *ngIf="showElements.expansion">
+  <mat-accordion multi="true" hideToggle>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Angular Complete Guide</mat-panel-title>
+        <mat-panel-description>Total Duration: 42 hours</mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>this is the panel content. add course details</p>
+      <mat-action-row>
+        <button mat-button>Enroll</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Angular Material</mat-panel-title>
+        <mat-panel-description>Total Duration: 2 hours</mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>this is the panel content. add course details</p>
+      <mat-action-row>
+        <button mat-button>Enroll</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

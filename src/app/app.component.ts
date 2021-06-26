@@ -18,7 +18,8 @@ export class AppComponent implements OnInit{
     "badges":false,
     "spinner":false,
     "toolbar":true,
-    "sidenav":true
+    "sidenav":false,
+    "menu":true
   }
   
   constructor(){}

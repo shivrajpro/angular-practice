@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
+import { MatBadgeModule } from "@angular/material/badge";
 import { MatButtonModule } from "@angular/material/button";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
-import { MatIconModule } from "@angular/material/icon";
-import { MatBadgeModule } from "@angular/material/badge";
-import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
-import { MatToolbarModule } from "@angular/material/toolbar";
-import { MatSidenavModule } from "@angular/material/sidenav";
-import { MatMenuModule } from "@angular/material/menu";
-import { MatGridListModule } from "@angular/material/grid-list";
+import { MatCardModule } from "@angular/material/card";
 import { MatExpansionModule } from "@angular/material/expansion";
+import { MatGridListModule } from "@angular/material/grid-list";
+import { MatIconModule } from "@angular/material/icon";
+import { MatMenuModule } from "@angular/material/menu";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatTabsModule } from "@angular/material/tabs";
 
 const MaterialComponents = [
   MatButtonModule,
@@ -20,7 +22,9 @@ const MaterialComponents = [
   MatSidenavModule,
   MatMenuModule,
   MatGridListModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatCardModule,
+  MatTabsModule
 ]
 @NgModule({
   imports: [

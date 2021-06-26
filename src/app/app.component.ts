@@ -21,7 +21,9 @@ export class AppComponent implements OnInit{
     "sidenav":false,
     "menu":false,
     "gridList":false,
-    "expansion":true
+    "expansion":false,
+    "card":false,
+    "tabs":true
   }
   
   constructor(){}

@@ -236,3 +236,23 @@
     </mat-expansion-panel>
   </mat-accordion>
 </div>
+
+<!-- card -->
+<div *ngIf="showElements.card">
+  <mat-card>
+    <mat-card-title>Card Title</mat-card-title>
+    <mat-card-content>add some content in the card</mat-card-content>
+    <mat-card-actions align="end" >
+      <button mat-flat-button>Login</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<!-- tabs -->
+<div *ngIf="showElements.tabs" >
+  <mat-tab-group #tabRef (selectedTabChange)="log(tabRef)">
+    <mat-tab label="Angular" >Angular Content</mat-tab>
+    <mat-tab label="React" >React Content</mat-tab>
+    <mat-tab label="Vue" >Vue Content</mat-tab>
+  </mat-tab-group>
+</div>

@@ -11,8 +11,10 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatTabsModule } from "@angular/material/tabs";
+import { MatStepperModule } from "@angular/material/stepper";
 
 const MaterialComponents = [
+  MatStepperModule,
   MatButtonModule,
   MatButtonToggleModule,
   MatIconModule,

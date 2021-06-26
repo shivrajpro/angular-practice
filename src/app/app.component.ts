@@ -23,7 +23,8 @@ export class AppComponent implements OnInit{
     "gridList":false,
     "expansion":false,
     "card":false,
-    "tabs":true
+    "tabs":false,
+    "stepper":true
   }
   
   constructor(){}

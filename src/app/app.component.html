@@ -256,3 +256,28 @@
     <mat-tab label="Vue" >Vue Content</mat-tab>
   </mat-tab-group>
 </div>
+
+<!-- stepper -->
+<div *ngIf="showElements.stepper">
+  <mat-horizontal-stepper linear>
+    <mat-step completed="true" label="Confirm Order" >review your order</mat-step>
+    <mat-step completed="false" optional label="Shipping Address" >enter your address
+      <div>
+        <button mat-flat-button matStepperPrevious>Prev</button>
+        <button mat-flat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step completed="false" label="Payment" >complete your payment</mat-step>
+  </mat-horizontal-stepper>
+
+  <mat-vertical-stepper>
+    <mat-step completed="true" label="Delivered" >please write a review</mat-step>
+    <mat-step completed="false" optional label="Order Shipped" >order has left
+      <div>
+        <button mat-flat-button matStepperPrevious>Prev</button>
+        <button mat-flat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step completed="false" label="Order Placed" >your order is confirmed</mat-step>
+  </mat-vertical-stepper>
+</div>

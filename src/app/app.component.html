@@ -135,3 +135,28 @@
   <mat-progress-spinner value="40"></mat-progress-spinner>
   <mat-spinner color="warn"></mat-spinner>
 </div>
+
+<!-- toolbar -->
+<div *ngIf="showElements.toolbar">
+  <mat-toolbar color="primary" class="mat-navbar" >
+    <div>CodeEvolution</div>
+    <div>
+      <span>Home</span>
+      <span>Services</span>
+      <span>About</span>
+    </div>
+  </mat-toolbar>
+</div>
+
+<!-- sidenav -->
+<div *ngIf="showElements.sidenav">
+  <button (click)="sideNavOpened = !sideNavOpened">Toggle Sidenav</button>
+  <button (click)="sidenav.open()">open</button>
+  <button (click)="sidenav.close()">close</button>
+  <button (click)="sidenav.toggle()">toggle</button>
+  <mat-sidenav-container>
+    <!-- mode = "over/push/side" -->
+    <mat-sidenav (opened)="log('opened')" (closed)="log('closed')" #sidenav mode="side" [opened]="sideNavOpened">sidenav</mat-sidenav>
+    <mat-sidenav-content>content</mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

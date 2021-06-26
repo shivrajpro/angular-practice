@@ -8,17 +8,25 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   title: string = 'Angular Material';
   
+  sideNavOpened = false;
+
   showElements = {
     "typography":false,
     "buttons":false,
     "buttonToggle":false,
     "icons":false,
     "badges":false,
-    "spinner":true
+    "spinner":false,
+    "toolbar":true,
+    "sidenav":true
   }
   
   constructor(){}
 
   ngOnInit(){
+  }
+
+  log(state){
+    console.log('>> ',state);
   }
 }

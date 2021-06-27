@@ -374,3 +374,10 @@
     <mat-datepicker #myDatePicker></mat-datepicker>
   </mat-form-field>
 </div>
+
+
+<!--  -->
+<div *ngIf="showElements.snackbar" class="m-4">
+  <button mat-raised-button (click)="openSnackbar()" >Delete</button>
+  <button mat-raised-button (click)="openCustomSnackbar()" >Custom</button>
+</div>

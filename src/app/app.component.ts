@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from "rxjs";
 import { map, startWith } from "rxjs/operators";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ export class AppComponent implements OnInit {
   filteredUISkills: Observable<string[]>;
   uiSkillFormCtrl = new FormControl();
 
+
   uiSkillNames = ["Angular", "Angular Material", "React", "React Native", "Vue"];
   uiSkills = [
     { 'name': 'Angular' },
@@ -29,7 +31,8 @@ export class AppComponent implements OnInit {
   sideNavOpened = false;
 
   showElements = {
-    "datePicker": true,
+    "snackbar":true,
+    "datePicker": false,
     "typography": false,
     "buttons": false,
     "buttonToggle": false,
@@ -51,7 +54,7 @@ export class AppComponent implements OnInit {
     "radio": false
   }
 
-  constructor() { }
+  constructor(private snackbar:MatSnackBar) { }
 
   ngOnInit() {
     this.filteredUISkills = this.uiSkillFormCtrl.valueChanges.pipe(
@@ -60,6 +63,21 @@ export class AppComponent implements OnInit {
     )
   }
 
+  openCustomSnackbar(){
+    this.snackbar.openFromComponent(CustomSnackbarComponent, {duration:1000});
+  }
+  
+  openSnackbar(){
+    const snackbarRef = this.snackbar.open("Item was deleted","dismiss", {duration:1000});
+
+    snackbarRef.afterDismissed().subscribe(()=>{
+      console.log('>> after dismiss');
+    });
+
+    snackbarRef.onAction().subscribe(()=>{
+      console.log('>> on action');
+    })
+  }
   noWeekendFilter = (date: Date) => {
     const d = date.getDay();
 
@@ -98,3 +116,9 @@ export class AppComponent implements OnInit {
     console.log('>>selectedUISkills', this.selectedUISkills);
   }
 }
+
+@Component({
+  selector:'custom-snackbar',
+  template:`<span style="color:orange" >custom snackbar</span>`
+})
+export class CustomSnackbarComponent{}

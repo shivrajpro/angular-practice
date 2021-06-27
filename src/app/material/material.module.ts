@@ -17,8 +17,12 @@ import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatRadioModule } from "@angular/material/radio";
 
 const MaterialComponents = [
+  MatRadioModule,
+  MatCheckboxModule,
   MatAutocompleteModule,
   MatTooltipModule,
   MatSelectModule,

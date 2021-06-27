@@ -43,7 +43,9 @@ export class AppComponent implements OnInit {
     "stepper": false,
     "formField": false,
     "tooltip": false,
-    "autocomplete": true
+    "autocomplete": false,
+    "checkbox":false,
+    "radio":true
   }
 
   constructor() { }

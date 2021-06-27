@@ -62,7 +62,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   sideNavOpened = false;
 
   showElements = {
-    "table": true,
+    "virtualScrolling":true,
+    "table": false,
     "dialog": false,
     "snackbar": false,
     "datePicker": false,
@@ -87,6 +88,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     "radio": false
   }
 
+  numbers:number[] = [];
+
   constructor(private snackbar: MatSnackBar, private dialog: MatDialog) { }
 
   ngAfterViewInit(): void {
@@ -107,6 +110,9 @@ export class AppComponent implements OnInit, AfterViewInit {
       startWith(''),
       map(value => this._filterUISkills(value))
     )
+
+    for (let i = 1; i<=1000; i++)
+      this.numbers.push(i);
   }
 
   openDialog() {

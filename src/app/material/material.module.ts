@@ -26,8 +26,10 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatTableModule } from "@angular/material/table";
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 const MaterialComponents = [
+  ScrollingModule,
   MatPaginatorModule,
   MatSortModule,
   MatTableModule,

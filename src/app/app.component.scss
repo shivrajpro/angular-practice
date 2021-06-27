@@ -35,3 +35,15 @@ table {
 .m-4 {
     margin: 4px;
 }
+.numbers-wrapper{
+    height: 400px;
+}
+
+.number{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    box-sizing: border-box;
+    height: 100px;
+}

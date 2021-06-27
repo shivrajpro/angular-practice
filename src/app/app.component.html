@@ -290,10 +290,10 @@
   </mat-form-field>
 
   <!-- <button mat-flat-button (click)="selectedValue=['angular','react']" >Select Angular and React</button> -->
-  <button mat-flat-button (click)="invertUISkills()" >Invert Selection</button>
+  <button mat-flat-button (click)="invertUISkills()">Invert Selection</button>
   <mat-form-field>
     <mat-label>FrontEnd</mat-label>
-    <mat-select multiple [(value)]="selectedUISkills" (selectionChange)="uiSelectionChanged(selectedUISkills)" >
+    <mat-select multiple [(value)]="selectedUISkills" (selectionChange)="uiSelectionChanged(selectedUISkills)">
       <mat-option value="angular">Angular</mat-option>
       <mat-option value="react">React</mat-option>
       <mat-option value="vue">Vue</mat-option>
@@ -303,7 +303,7 @@
     <mat-label>Topic</mat-label>
     <mat-select [(value)]="selectedValue" multiple (selectionChange)="log(selectedValue)">
       <mat-option value="none">None</mat-option>
-      <mat-optgroup label="Web" >
+      <mat-optgroup label="Web">
         <mat-option value="angular">Angular</mat-option>
         <mat-option value="react">React</mat-option>
         <mat-option value="vue">Vue</mat-option>
@@ -318,20 +318,17 @@
 </div>
 
 <!-- tooltip -->
-<div *ngIf="showElements.tooltip" >
-  <button mat-raised-button matTooltip="Welcome to CodeEvolution" 
-  matTooltipPosition="below"
-  matTooltipShowDelay="1500"
-  matTooltipHideDelay="1000"
-  >hello</button>
+<div *ngIf="showElements.tooltip">
+  <button mat-raised-button matTooltip="Welcome to CodeEvolution" matTooltipPosition="below" matTooltipShowDelay="1500"
+    matTooltipHideDelay="1000">hello</button>
 </div>
 
 <!-- autocomplete -->
-<div *ngIf="showElements.autocomplete"> 
+<div *ngIf="showElements.autocomplete">
   <mat-form-field>
     <input type="text" matInput [matAutocomplete]="auto" />
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" >
-      <mat-option *ngFor="let skill of uiSkills" [value]="skill" >
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let skill of uiSkills" [value]="skill">
         {{skill.name}}
       </mat-option>
     </mat-autocomplete>
@@ -340,8 +337,8 @@
   <mat-form-field>
     <input type="text" matInput [matAutocomplete]="autoNames" [formControl]="uiSkillFormCtrl" />
     <mat-hint>autocomplete with filter</mat-hint>
-    <mat-autocomplete #autoNames="matAutocomplete" >
-      <mat-option *ngFor="let skill of filteredUISkills | async" [value]="skill" >
+    <mat-autocomplete #autoNames="matAutocomplete">
+      <mat-option *ngFor="let skill of filteredUISkills | async" [value]="skill">
         {{skill}}
       </mat-option>
     </mat-autocomplete>
@@ -349,28 +346,29 @@
 </div>
 
 <!-- checkbox -->
-<div *ngIf="showElements.checkbox" class="m-4" >
+<div *ngIf="showElements.checkbox" class="m-4">
   <mat-checkbox>Subscribe</mat-checkbox><br>
-  <mat-checkbox color="primary" >Subscribe</mat-checkbox><br>
-  <mat-checkbox color="warn" >Subscribe</mat-checkbox><br>
-  <mat-checkbox labelPosition="before" >Subscribe</mat-checkbox>
+  <mat-checkbox color="primary">Subscribe</mat-checkbox><br>
+  <mat-checkbox color="warn">Subscribe</mat-checkbox><br>
+  <mat-checkbox labelPosition="before">Subscribe</mat-checkbox>
 </div>
 
 <!-- radio -->
 <!-- https://material.angular.io/components/radio/examples -->
-<div *ngIf="showElements.radio" class="m-4" >
+<div *ngIf="showElements.radio" class="m-4">
   <mat-radio-group>
     <mat-radio-button value="angular">Angular</mat-radio-button>
-    <mat-radio-button value="react" color="primary" >React</mat-radio-button>
-    <mat-radio-button value="vue" color="warn" >Vue</mat-radio-button>
+    <mat-radio-button value="react" color="primary">React</mat-radio-button>
+    <mat-radio-button value="vue" color="warn">Vue</mat-radio-button>
   </mat-radio-group>
 </div>
 
 <!-- date picker -->
 <div *ngIf="showElements.datePicker">
   <mat-form-field>
-    <input matInput [matDatepicker]="myDatePicker" [min]="minDate" [max]="maxDate" [matDatepickerFilter]="noWeekendFilter" />
-    <mat-datepicker-toggle [for]="myDatePicker" matSuffix ></mat-datepicker-toggle>
+    <input matInput [matDatepicker]="myDatePicker" [min]="minDate" [max]="maxDate"
+      [matDatepickerFilter]="noWeekendFilter" />
+    <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
     <mat-datepicker #myDatePicker></mat-datepicker>
   </mat-form-field>
 </div>
@@ -378,11 +376,54 @@
 
 <!-- snackbar -->
 <div *ngIf="showElements.snackbar" class="m-4">
-  <button mat-raised-button (click)="openSnackbar()" >Delete</button>
-  <button mat-raised-button (click)="openCustomSnackbar()" >Custom</button>
+  <button mat-raised-button (click)="openSnackbar()">Delete</button>
+  <button mat-raised-button (click)="openCustomSnackbar()">Custom</button>
 </div>
 
 <!-- dialog -->
 <div *ngIf="showElements.dialog" class="m-4">
-  <button mat-stroked-button (click)="openDialog()" >open</button>
+  <button mat-stroked-button (click)="openDialog()">open</button>
+</div>
+
+<!-- table -->
+<div *ngIf="showElements.table" class="mat-elevation-z8 m-4" >
+  <mat-form-field class="m-4">
+    <input type="text" matInput placeholder="search" (keyup)="filterTable($event.target.value)" />
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" matSort class="">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell mat-sort-header *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef> Weight </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
+    (click)="onRowClick(row)"
+    ></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons ></mat-paginator>
 </div>

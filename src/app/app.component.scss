@@ -1,32 +1,37 @@
-.mat-navbar{
+.mat-navbar {
     justify-content: space-between;
 
-    span{
+    span {
         padding-right: 1rem;
     }
 }
 
-mat-sidenav-container{
+mat-sidenav-container {
     height: 100vh;
 
-    mat-sidenav, mat-sidenav-content{
-        padding: 16px;    
+    mat-sidenav,
+    mat-sidenav-content {
+        padding: 16px;
     }
 
-    mat-sidenav{
-        width: 200px;
+    mat-sidenav {
+        width     : 200px;
         background: dodgerblue;
     }
 }
 
-.center{
+.center {
     margin: 10rem;
 }
 
-mat-grid-tile{
+mat-grid-tile {
     background: lightblue;
 }
 
-.m-4{
+table {
+    width: 100%;
+}
+
+.m-4 {
     margin: 4px;
 }

@@ -316,3 +316,34 @@
   </mat-form-field>
   selected topic is:{{selectedValue}}
 </div>
+
+<!-- tooltip -->
+<div *ngIf="showElements.tooltip" >
+  <button mat-raised-button matTooltip="Welcome to CodeEvolution" 
+  matTooltipPosition="below"
+  matTooltipShowDelay="1500"
+  matTooltipHideDelay="1000"
+  >hello</button>
+</div>
+
+<!-- autocomplete -->
+<div *ngIf="showElements.autocomplete"> 
+  <mat-form-field>
+    <input type="text" matInput [matAutocomplete]="auto" />
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" >
+      <mat-option *ngFor="let skill of uiSkills" [value]="skill" >
+        {{skill.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="text" matInput [matAutocomplete]="autoNames" [formControl]="uiSkillFormCtrl" />
+    <mat-hint>autocomplete with filter</mat-hint>
+    <mat-autocomplete #autoNames="matAutocomplete" >
+      <mat-option *ngFor="let skill of filteredUISkills | async" [value]="skill" >
+        {{skill}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>

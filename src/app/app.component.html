@@ -365,3 +365,12 @@
     <mat-radio-button value="vue" color="warn" >Vue</mat-radio-button>
   </mat-radio-group>
 </div>
+
+<!-- date picker -->
+<div *ngIf="showElements.datePicker">
+  <mat-form-field>
+    <input matInput [matDatepicker]="myDatePicker" [min]="minDate" [max]="maxDate" [matDatepickerFilter]="noWeekendFilter" />
+    <mat-datepicker-toggle [for]="myDatePicker" matSuffix ></mat-datepicker-toggle>
+    <mat-datepicker #myDatePicker></mat-datepicker>
+  </mat-form-field>
+</div>

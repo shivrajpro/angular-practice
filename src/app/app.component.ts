@@ -11,6 +11,8 @@ import { map, startWith } from "rxjs/operators";
 export class AppComponent implements OnInit {
   title: string = 'Angular Material';
 
+  minDate = new Date(2021, 6, 28);
+  maxDate = new Date(2021, 10, 27);//(new Date()).getMilliseconds;
   filteredUISkills: Observable<string[]>;
   uiSkillFormCtrl = new FormControl();
 
@@ -27,6 +29,7 @@ export class AppComponent implements OnInit {
   sideNavOpened = false;
 
   showElements = {
+    "datePicker": true,
     "typography": false,
     "buttons": false,
     "buttonToggle": false,
@@ -44,8 +47,8 @@ export class AppComponent implements OnInit {
     "formField": false,
     "tooltip": false,
     "autocomplete": false,
-    "checkbox":false,
-    "radio":true
+    "checkbox": false,
+    "radio": false
   }
 
   constructor() { }
@@ -53,15 +56,21 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.filteredUISkills = this.uiSkillFormCtrl.valueChanges.pipe(
       startWith(''),
-      map(value=>this._filterUISkills(value))
+      map(value => this._filterUISkills(value))
     )
   }
 
-  private _filterUISkills(inputSkill:string):string[]{
+  noWeekendFilter = (date: Date) => {
+    const d = date.getDay();
+
+    return d != 0 && d != 6;
+  }
+
+  private _filterUISkills(inputSkill: string): string[] {
     inputSkill = inputSkill.toLocaleLowerCase();
-    console.log('>> inputSkill',inputSkill);
-    
-    return this.uiSkillNames.filter(skill=>skill.toLocaleLowerCase().includes(inputSkill));
+    console.log('>> inputSkill', inputSkill);
+
+    return this.uiSkillNames.filter(skill => skill.toLocaleLowerCase().includes(inputSkill));
   }
 
   displayFn(subject) {

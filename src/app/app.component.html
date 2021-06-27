@@ -376,8 +376,13 @@
 </div>
 
 
-<!--  -->
+<!-- snackbar -->
 <div *ngIf="showElements.snackbar" class="m-4">
   <button mat-raised-button (click)="openSnackbar()" >Delete</button>
   <button mat-raised-button (click)="openCustomSnackbar()" >Custom</button>
+</div>
+
+<!-- dialog -->
+<div *ngIf="showElements.dialog" class="m-4">
+  <button mat-stroked-button (click)="openDialog()" >open</button>
 </div>

@@ -3,6 +3,8 @@ import { FormControl } from '@angular/forms';
 import { Observable } from "rxjs";
 import { map, startWith } from "rxjs/operators";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { MatDialog } from "@angular/material/dialog";
+import { DialogComponent } from './dialog/dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -31,7 +33,8 @@ export class AppComponent implements OnInit {
   sideNavOpened = false;
 
   showElements = {
-    "snackbar":true,
+    "dialog":true,
+    "snackbar":false,
     "datePicker": false,
     "typography": false,
     "buttons": false,
@@ -54,13 +57,21 @@ export class AppComponent implements OnInit {
     "radio": false
   }
 
-  constructor(private snackbar:MatSnackBar) { }
+  constructor(private snackbar:MatSnackBar, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.filteredUISkills = this.uiSkillFormCtrl.valueChanges.pipe(
       startWith(''),
       map(value => this._filterUISkills(value))
     )
+  }
+
+  openDialog(){
+    const dialogRef = this.dialog.open(DialogComponent, {data:{name:'Shivraj'}});
+
+    dialogRef.afterClosed().subscribe((result)=>{
+      console.log(`>> Dialog result:${result}`);
+    })
   }
 
   openCustomSnackbar(){

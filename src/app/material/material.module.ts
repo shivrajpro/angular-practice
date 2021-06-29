@@ -27,8 +27,10 @@ import { MatTableModule } from "@angular/material/table";
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 const MaterialComponents = [
+  NgxMatSelectSearchModule,
   ScrollingModule,
   MatPaginatorModule,
   MatSortModule,

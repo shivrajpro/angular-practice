@@ -62,7 +62,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   sideNavOpened = false;
 
   showElements = {
-    "virtualScrolling":true,
+    "multiselect":true,
+    "virtualScrolling":false,
     "table": false,
     "dialog": false,
     "snackbar": false,

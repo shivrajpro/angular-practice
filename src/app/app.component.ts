@@ -62,12 +62,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   sideNavOpened = false;
 
   showElements = {
-    "multiselect":true,
+    "multiselect":false,
     "virtualScrolling":false,
     "table": false,
     "dialog": false,
     "snackbar": false,
-    "datePicker": false,
+    "datePicker": true,
     "typography": false,
     "buttons": false,
     "buttonToggle": false,

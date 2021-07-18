@@ -44,6 +44,10 @@ export class AppComponent implements OnInit {
     });
   }
 
+  getControls(){
+    return (this.signupForm.get('hobbies') as FormArray).controls;
+  }
+
   onSubmit() {
     console.log(this.signupForm);
     this.signupForm.reset();

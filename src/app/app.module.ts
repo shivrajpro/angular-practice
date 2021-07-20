@@ -1,26 +1,23 @@
-import { HttpClientModule } from "@angular/common/http";
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
-import { MaterialModule } from "./material/material.module";
-import { AppComponent, CustomSnackbarComponent } from './app.component';
-import { ReactiveFormsModule } from "@angular/forms";
-import { DialogComponent } from './dialog/dialog.component';
-import { MultiSelectComponent } from './multi-select/multi-select.component';
+import { NgModule } from '@angular/core';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
+import { TdfComponent } from './tdf/tdf.component';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 
 @NgModule({
-  declarations: [AppComponent, CustomSnackbarComponent, DialogComponent, MultiSelectComponent],
+  declarations: [
+    AppComponent,
+    TdfComponent,
+    ReactiveFormsComponent
+  ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    MaterialModule
+    ReactiveFormsModule
   ],
-  bootstrap: [AppComponent],
-  providers: []
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

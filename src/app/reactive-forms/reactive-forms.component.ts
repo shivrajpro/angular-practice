@@ -25,13 +25,34 @@ export class ReactiveFormsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  statusChange(e){
-    console.log('>> evt',e);
+  statusChange(e) {
+    console.log('>> evt', e);
     this.projectForm.get('projectStatus').get('status').setValue(e.target.value);
   }
 
-  onSubmit(){
-    console.log('>> ',this.projectForm);
+  onSubmit() {
+    if(this.projectForm.invalid){
+      this.projectForm.markAllAsTouched();
+      this.showValidationMsg(this.projectForm);
+    }
+    console.log('>> ', this.projectForm);
+  }
+
+  showValidationMsg(formGroup: FormGroup) {
+
+    return;
+    for (const key in formGroup.controls) {
+      if (formGroup.controls.hasOwnProperty(key)) {
+        const control: FormControl = <FormControl>formGroup.controls[key];
+
+        if (Object.keys(control).includes('controls')) {
+          const formGroupChild: FormGroup = <FormGroup>formGroup.controls[key];
+          this.showValidationMsg(formGroupChild);
+        }
+
+        control.markAsTouched();
+      }
+    }
   }
 
 }

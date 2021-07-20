@@ -4,14 +4,20 @@
     test as project name is not allowed
     print the form values to console
  -->
-<form [formGroup]="projectForm" (ngSubmit)="onSubmit()" >
-    <input type="text" placeholder="name" formControlName="name" required />
-    <input type="email" placeholder="email" formControlName="email" email required />
-    <div formGroupName="projectStatus" >
-        <select formControlName="status" (change)="statusChange($event)" >
-            <option value="" selected >--select status--</option>
-            <option *ngFor="let status of projectStatusList" [value]="status" >{{status}}</option>
-        </select>
-    </div>
-    <button type="submit">Submit</button>
-</form>
+<div class="container">
+    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+        <input type="text" placeholder="name" formControlName="name" required />
+        <p class="error-text" *ngIf="projectForm.get('name').touched && projectForm.get('name').hasError('required')">Name can't be blank</p>
+        <br>
+        <input type="email" placeholder="email" formControlName="email" email required />
+        <!-- <p class="error-text">Email can't be blank</p> -->
+        <br>
+        <div formGroupName="projectStatus">
+            <select formControlName="status" (change)="statusChange($event)">
+                <option value="" selected>--select status--</option>
+                <option *ngFor="let status of projectStatusList" [value]="status">{{status}}</option>
+            </select>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>

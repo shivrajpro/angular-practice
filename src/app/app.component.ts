@@ -23,25 +23,32 @@ export class AppComponent implements OnInit {
       'gender': new FormControl('male'),
       'hobbies': new FormArray([])
     });
+    // gets invoked when any form control is changed
     // this.signupForm.valueChanges.subscribe(
     //   (value) => console.log(value)
     // );
+    
+    // gets invoked when status of the form (valid,invalid,pending,dirty,touched,pristine) is changed
     // this.signupForm.statusChanges.subscribe(
     //   (status) => console.log(status)
     // );
-    this.signupForm.setValue({
-      'userData': {
-        'username': 'Max',
-        'email': 'max@test.com'
-      },
-      'gender': 'male',
-      'hobbies': []
-    });
-    this.signupForm.patchValue({
-      'userData': {
-        'username': 'Anna',
-      }
-    });
+    
+    // to initialize the entire form
+    // this.signupForm.setValue({
+    //   'userData': {
+    //     'username': 'Max',
+    //     'email': 'max@test.com'
+    //   },
+    //   'gender': 'male',
+    //   'hobbies': []
+    // });
+    
+    // to set certain controls in the form
+    // this.signupForm.patchValue({
+    //   'userData': {
+    //     'username': 'Anna',
+    //   }
+    // });
   }
 
   getControls(){
@@ -49,8 +56,9 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.signupForm);
-    this.signupForm.reset();
+    this.signupForm.markAllAsTouched();
+    console.log('>> ',this.signupForm);
+    // this.signupForm.reset();
   }
 
   onAddHobby() {

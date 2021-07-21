@@ -62,7 +62,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   sideNavOpened = false;
 
   showElements = {
-    "multiselect":true,
+    "multiselect":false,
     "virtualScrolling":false,
     "table": false,
     "dialog": false,
@@ -71,7 +71,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     "typography": false,
     "buttons": false,
     "buttonToggle": false,
-    "icons": false,
+    "icons": true,
     "badges": false,
     "spinner": false,
     "toolbar": true,
@@ -82,7 +82,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     "card": false,
     "tabs": false,
     "stepper": false,
-    "formField": false,
+    "formField": true,
     "tooltip": false,
     "autocomplete": false,
     "checkbox": false,

@@ -5,6 +5,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NavigationEnd, Router, RoutesRecognized } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, pairwise } from "rxjs/operators";
+import { RouteService } from "../services/route.service";
 
 @Component({
   selector: 'app-reactive-forms',
@@ -18,7 +19,7 @@ export class ReactiveFormsComponent implements OnInit {
   projectForm: FormGroup;
   projectStatusList: string[] = ['Critical', 'Stable', 'Finished'];
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private routerService: RouteService) {
     this.signupForm = new FormGroup({
       userData: new FormGroup({
         username: new FormControl(null, [
@@ -69,14 +70,8 @@ export class ReactiveFormsComponent implements OnInit {
       }),
     });
 
-    // console.log('>> router', this.router);
-    // console.log('>> router url', this.router.url);
-
-    this.router.events.pipe(filter((evt: any) => evt instanceof RoutesRecognized), pairwise())
-    .subscribe((events: RoutesRecognized[]) => {
-      console.log('>> previous url', events[0].urlAfterRedirects);
-      console.log('>> current url', events[1].urlAfterRedirects);
-    });
+    console.log('>> ',routerService.getPreviousUrl());
+    
   }
 
   ngOnInit(): void {}

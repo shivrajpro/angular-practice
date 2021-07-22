@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { TdfComponent } from './tdf/tdf.component';
 import { AppRoutingModule } from "./app-routing.module";
-
+import { RouteService } from "./services/route.service";
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { AppRoutingModule } from "./app-routing.module";
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [RouteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

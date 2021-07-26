@@ -1,185 +1,88 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Observable } from "rxjs";
-import { map, startWith } from "rxjs/operators";
-import { MatSnackBar } from "@angular/material/snack-bar";
-import { MatDialog } from "@angular/material/dialog";
-import { DialogComponent } from './dialog/dialog.component';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-];
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, AfterViewInit {
-  title: string = 'Angular Material';
+export class AppComponent implements OnInit {
+  genders = ['male', 'female'];
+  signupForm: FormGroup;
+  forbiddenUsernames = ['Chris', 'Anna'];
 
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-
-  minDate = new Date(2021, 6, 28);
-  maxDate = new Date(2021, 10, 27);//(new Date()).getMilliseconds;
-  filteredUISkills: Observable<string[]>;
-  uiSkillFormCtrl = new FormControl();
-
-
-  uiSkillNames = ["Angular", "Angular Material", "React", "React Native", "Vue"];
-  uiSkills = [
-    { 'name': 'Angular' },
-    { 'name': 'Angular Material' },
-    { 'name': 'React' },
-    { 'name': 'Vue' }
-  ];
-
-  allUISkills = ["angular", "react", "vue"];
-  selectedUISkills = [];
-  sideNavOpened = false;
-
-  showElements = {
-    "multiselect":false,
-    "virtualScrolling":false,
-    "table": false,
-    "dialog": false,
-    "snackbar": false,
-    "datePicker": true,
-    "typography": false,
-    "buttons": false,
-    "buttonToggle": false,
-    "icons": true,
-    "badges": false,
-    "spinner": false,
-    "toolbar": true,
-    "sidenav": false,
-    "menu": false,
-    "gridList": false,
-    "expansion": false,
-    "card": false,
-    "tabs": false,
-    "stepper": false,
-    "formField": true,
-    "tooltip": false,
-    "autocomplete": false,
-    "checkbox": false,
-    "radio": false
-  }
-
-  numbers:number[] = [];
-
-  constructor(private snackbar: MatSnackBar, private dialog: MatDialog) { }
-
-  ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-  }
-
-  onRowClick(row) {
-    console.log('>>', row);
-  }
-
-  filterTable(searchInput: string) {
-    this.dataSource.filter = searchInput.trim().toLowerCase();
-  }
+  constructor() {}
 
   ngOnInit() {
-    this.filteredUISkills = this.uiSkillFormCtrl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filterUISkills(value))
-    )
-
-    for (let i = 1; i<=1000; i++)
-      this.numbers.push(i);
-  }
-
-  openDialog() {
-    const dialogRef = this.dialog.open(DialogComponent, { data: { name: 'Shivraj' } });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`>> Dialog result:${result}`);
-    })
-  }
-
-  openCustomSnackbar() {
-    this.snackbar.openFromComponent(CustomSnackbarComponent, { duration: 1000 });
-  }
-
-  openSnackbar() {
-    const snackbarRef = this.snackbar.open("Item was deleted", "dismiss", { duration: 1000 });
-
-    snackbarRef.afterDismissed().subscribe(() => {
-      console.log('>> after dismiss');
+    this.signupForm = new FormGroup({
+      'userData': new FormGroup({
+        'username': new FormControl(null, [Validators.required, this.forbiddenNames.bind(this)]),
+        'email': new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails)
+      }),
+      'gender': new FormControl('male'),
+      'hobbies': new FormArray([])
     });
-
-    snackbarRef.onAction().subscribe(() => {
-      console.log('>> on action');
-    })
-  }
-  noWeekendFilter = (date: Date) => {
-    const d = date.getDay();
-
-    return d != 0 && d != 6;
-  }
-
-  private _filterUISkills(inputSkill: string): string[] {
-    inputSkill = inputSkill.toLocaleLowerCase();
-    console.log('>> inputSkill', inputSkill);
-
-    return this.uiSkillNames.filter(skill => skill.toLocaleLowerCase().includes(inputSkill));
-  }
-
-  displayFn(subject) {
-    return subject ? subject.name : undefined;
-  }
-
-  log(state) {
-    console.log('>> ', state);
-  }
-
-  uiSelectionChanged(selectedValues) {
-    console.log('>> ', selectedValues);
-
+    // gets invoked when any form control is changed
+    // this.signupForm.valueChanges.subscribe(
+    //   (value) => console.log(value)
+    // );
+    
+    // gets invoked when status of the form (valid,invalid,pending,dirty,touched,pristine) is changed
+    // this.signupForm.statusChanges.subscribe(
+    //   (status) => console.log(status)
+    // );
+    
+    // to initialize the entire form
+    // this.signupForm.setValue({
+    //   'userData': {
+    //     'username': 'Max',
+    //     'email': 'max@test.com'
+    //   },
+    //   'gender': 'male',
+    //   'hobbies': []
+    // });
+    
+    // to set certain controls in the form
+    // this.signupForm.patchValue({
+    //   'userData': {
+    //     'username': 'Anna',
+    //   }
+    // });
   }
 
-  invertUISkills() {
-    const newSelectedSkills = [];
+  getControls(){
+    return (this.signupForm.get('hobbies') as FormArray).controls;
+  }
 
-    for (const skill of this.allUISkills) {
-      if (this.selectedUISkills.indexOf(skill) === -1)
-        newSelectedSkills.push(skill);
+  onSubmit() {
+    this.signupForm.markAllAsTouched();
+    console.log('>> ',this.signupForm);
+    // this.signupForm.reset();
+  }
+
+  onAddHobby() {
+    const control = new FormControl(null, Validators.required);
+    (<FormArray>this.signupForm.get('hobbies')).push(control);
+  }
+
+  forbiddenNames(control: FormControl): {[s: string]: boolean} {
+    if (this.forbiddenUsernames.indexOf(control.value) !== -1) {
+      return {'nameIsForbidden': true};
     }
+    return null;
+  }
 
-    this.selectedUISkills = newSelectedSkills.slice();
-    console.log('>>selectedUISkills', this.selectedUISkills);
+  forbiddenEmails(control: FormControl): Promise<any> | Observable<any> {
+    const promise = new Promise<any>((resolve, reject) => {
+      setTimeout(() => {
+        if (control.value === 'test@test.com') {
+          resolve({'emailIsForbidden': true});
+        } else {
+          resolve(null);
+        }
+      }, 1500);
+    });
+    return promise;
   }
 }
-
-@Component({
-  selector: 'custom-snackbar',
-  template: `<span style="color:orange" >custom snackbar</span>`
-})
-export class CustomSnackbarComponent { }

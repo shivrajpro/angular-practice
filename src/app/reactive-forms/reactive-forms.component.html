@@ -1,0 +1,23 @@
+<p>reactive-forms works!</p>
+<!-- 
+    project name, email and project status (stable,critical,finished)
+    test as project name is not allowed
+    print the form values to console
+ -->
+<div class="container">
+    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+        <input type="text" placeholder="name" formControlName="name" required />
+        <p class="error-text" *ngIf="projectForm.get('name').touched && projectForm.get('name').hasError('required')">Name can't be blank</p>
+        <br>
+        <input type="email" placeholder="email" formControlName="email" email required />
+        <!-- <p class="error-text">Email can't be blank</p> -->
+        <br>
+        <div formGroupName="projectStatus">
+            <select formControlName="status" (change)="statusChange($event)">
+                <option value="" selected>--select status--</option>
+                <option *ngFor="let status of projectStatusList" [value]="status">{{status}}</option>
+            </select>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>

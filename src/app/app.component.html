@@ -1,444 +1,61 @@
-<!-- typography -->
-<div *ngIf="showElements.typography">
-  <div class="mat-display-4">This is display 4</div>
-  <div class="mat-display-3">This is display 3</div>
-  <div class="mat-display-2">This is display 2</div>
-  <div class="mat-display-1">This is display 1</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <div formGroupName="userData">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              formControlName="username"
+              class="form-control">
+            <span
+              *ngIf="!signupForm.get('userData.username').valid && signupForm.get('userData.username').touched"
+              class="help-block">
+              <span *ngIf="signupForm.get('userData.username').errors['nameIsForbidden']">This name is invalid!</span>
+              <span *ngIf="signupForm.get('userData.username').errors['required']">This field is required!</span>
 
-  <div class="mat-headline">this is mat-headline h1</div>
-  <div class="mat-title">this is mat-title h2</div>
-  <div class="mat-subheading-2">this is mat-subheading-2 h3</div>
-  <div class="mat-subheading-1">this is mat-subheading-1 h4</div>
-
-  <div class="mat-body-1">this is mat-body-1</div>
-  <div class="mat-body-2">this is mat-body-2</div>
-  <div class="mat-caption">this is mat-caption</div>
-
-  <div class="mat-typography">
-    <h1>this is h1</h1>
-    <h2>this is h2</h2>
-    <h3>this is h3</h3>
-    <h4>this is h4</h4>
-  </div>
-</div>
-
-<!-- buttons -->
-<div *ngIf="showElements.buttons">
-  <div>
-    <button mat-button>normal</button>
-    <button mat-raised-button>raised</button>
-    <button mat-flat-button>flat</button>
-    <button mat-stroked-button>stroked</button>
-  </div>
-
-  <div>
-    <button mat-icon-button>icon</button>
-    <button mat-fab>fab</button>
-    <button mat-mini-fab>mini</button>
-  </div>
-
-  <div>
-    <button color="primary" mat-button>primary</button>
-    <button color="accent" mat-button>accent</button>
-    <button color="warn" mat-button>warn</button>
-    <button color="primary" mat-raised-button>primary</button>
-    <button color="accent" disableRipple mat-raised-button>accent</button>
-    <button color="warn" mat-raised-button>warn</button>
-  </div>
-</div>
-
-<!-- button toggle -->
-<div *ngIf="showElements.buttonToggle">
-  <div>
-    <mat-button-toggle #toggleBtn disableRipple checked>Toggle</mat-button-toggle>
-    {{toggleBtn.checked}}
-  </div>
-  <div>
-    <mat-button-toggle-group #toggleBtnGrp="matButtonToggleGroup" multiple>
-      <mat-button-toggle value="angular">Angular</mat-button-toggle>
-      <mat-button-toggle value="react">React</mat-button-toggle>
-      <mat-button-toggle value="vue">Vue</mat-button-toggle>
-    </mat-button-toggle-group>
-    {{toggleBtnGrp.value}}
-  </div>
-</div>
-
-<!-- icons -->
-<div *ngIf="showElements.icons">
-  <mat-icon color="warn">home</mat-icon>
-</div>
-
-<!-- badge -->
-<div *ngIf="showElements.badges">
-  <div>
-    <span>Example</span>
-    <button mat-button>
-      <mat-icon>notifications</mat-icon><span matBadge="2" [matBadgeHidden]="true"></span>
-    </button>
-    <button mat-button>
-      <mat-icon>messages</mat-icon><span matBadge="2"></span>
-    </button>
-  </div>
-  <!-- matBadgeSize="small|medium|large"-->
-  <div>
-    <span>Badge Size</span>
-    <button mat-button>
-      <mat-icon>notifications</mat-icon><span matBadge="2" matBadgeSize="small"></span>
-    </button>
-    <button mat-button>
-      <mat-icon>notifications</mat-icon><span matBadge="2" matBadgeSize="medium"></span>
-    </button>
-    <button mat-button>
-      <mat-icon>notifications</mat-icon><span matBadge="2" matBadgeSize="large"></span>
-    </button>
-  </div>
-
-  <!-- matBadgePosition -->
-  <div>
-    <span>Badge Position</span>
-    <button mat-button>
-      <mat-icon>notifications</mat-icon>
-      <span matBadge="2" matBadgeSize="medium" matBadgePosition="below before"></span>
-    </button>
-    <button mat-button>
-      <mat-icon>notifications</mat-icon>
-      <span matBadge="2" matBadgeSize="medium" matBadgePosition="below after"></span>
-    </button>
-    <button mat-button>
-      <mat-icon>notifications</mat-icon>
-      <span matBadge="2" matBadgeSize="medium" matBadgePosition="above before"></span>
-    </button>
-    <button mat-button>
-      <mat-icon>notifications</mat-icon>
-      <span matBadge="2" matBadgeSize="medium" matBadgePosition="above after"></span>
-    </button>
-  </div>
-
-  <!-- matBadgeColor -->
-  <div>
-    <span>Badge Color</span>
-    <button mat-button>
-      <mat-icon>notifications</mat-icon><span matBadge="2"></span>
-    </button>
-    <button mat-button>
-      <mat-icon>notifications</mat-icon><span matBadge="2" matBadgeColor="warn"></span>
-    </button>
-    <button mat-button>
-      <mat-icon>notifications</mat-icon><span matBadge="2" matBadgeColor="accent"></span>
-    </button>
-  </div>
-
-</div>
-
-<!-- spinners -->
-<div *ngIf="showElements.spinner">
-  <mat-progress-spinner value="40"></mat-progress-spinner>
-  <mat-spinner color="warn"></mat-spinner>
-</div>
-
-<!-- toolbar -->
-<div *ngIf="showElements.toolbar">
-  <mat-toolbar color="primary" class="mat-navbar">
-    <div>CodeEvolution</div>
-    <div>
-      <span>Home</span>
-      <span>Services</span>
-      <span>About</span>
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="email">email</label>
+            <input
+              type="text"
+              id="email"
+              formControlName="email"
+              class="form-control">
+            <span
+              *ngIf="!signupForm.get('userData.email').valid && signupForm.get('userData.email').touched"
+              class="help-block">Please enter a valid email!</span>
+          </div>
+        </div>
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input
+              type="radio"
+              formControlName="gender"
+              [value]="gender">{{ gender }}
+          </label>
+        </div>
+        <div formArrayName="hobbies">
+          <h4>Your Hobbies</h4>
+          <button
+            class="btn btn-default"
+            type="button"
+            (click)="onAddHobby()">Add Hobby</button>
+          <div
+            class="form-group"
+            *ngFor="let hobbyControl of getControls(); let i = index">
+            <input type="text" class="form-control" [formControlName]="i">
+          </div>
+        </div>
+        <span
+          *ngIf="!signupForm.valid && signupForm.touched"
+          class="help-block">Please enter valid data!</span>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
     </div>
-  </mat-toolbar>
+  </div>
 </div>
-
-<!-- sidenav -->
-<div *ngIf="showElements.sidenav">
-  <button (click)="sideNavOpened = !sideNavOpened">Toggle Sidenav</button>
-  <button (click)="sidenav.open()">open</button>
-  <button (click)="sidenav.close()">close</button>
-  <button (click)="sidenav.toggle()">toggle</button>
-  <mat-sidenav-container>
-    <!-- mode = "over/push/side" -->
-    <mat-sidenav (opened)="log('opened')" (closed)="log('closed')" #sidenav mode="side" [opened]="sideNavOpened">sidenav
-    </mat-sidenav>
-    <mat-sidenav-content>content</mat-sidenav-content>
-  </mat-sidenav-container>
-</div>
-
-<!-- menu -->
-<div *ngIf="showElements.menu">
-  <button class="center" mat-flat-button [matMenuTriggerFor]="skillsMenu">Skills</button>
-  <mat-menu #skillsMenu="matMenu">
-    <button mat-menu-item [matMenuTriggerFor]="frontend">FrontEnd</button>
-    <button mat-menu-item>BackEnd</button>
-  </mat-menu>
-
-  <mat-menu #frontend="matMenu" xPosition="after" yPosition="below">
-    <button mat-menu-item>Angular</button>
-    <button mat-menu-item>React</button>
-    <button mat-menu-item>Vue</button>
-  </mat-menu>
-
-  <mat-menu #lazyMenu="matMenu">
-    <ng-template matMenuContent let-name="name" let-hobby="hobby">
-      <button mat-menu-item>Settings</button>
-      <button mat-menu-item>Hobby is {{hobby}} </button>
-      <button mat-menu-item>Log out {{name}} </button>
-    </ng-template>
-  </mat-menu>
-
-  <button mat-raised-button [matMenuTriggerData]="{'name':'Vishwas', 'hobby':'Cricket'}" [matMenuTriggerFor]="lazyMenu">
-    Vishwas
-  </button>
-  <button mat-raised-button [matMenuTriggerFor]="lazyMenu"
-    [matMenuTriggerData]="{'name':'CodeEvolution', 'hobby':'Football'}">
-    CodeEvolution
-  </button>
-</div>
-
-<!-- grid list -->
-<div *ngIf="showElements.gridList">
-  <!-- <mat-grid-list cols="2" gutterSize="4" rowHeight="fit" style="height:200px" > -->
-  <!-- <mat-grid-list cols="2" gutterSize="4" rowHeight="200px" style="height:200px" > -->
-  <mat-grid-list cols="2" gutterSize="4" rowHeight="2:1" style="height:200px">
-    <!-- colspan should not exceed cols -->
-    <!-- <mat-grid-tile colspan="2" >tile 1</mat-grid-tile> -->
-    <!-- <mat-grid-tile rowspan="2" >tile 1</mat-grid-tile> -->
-    <mat-grid-tile>tile 1</mat-grid-tile>
-    <mat-grid-tile>tile 2</mat-grid-tile>
-    <mat-grid-tile>tile 3</mat-grid-tile>
-    <mat-grid-tile>tile 4</mat-grid-tile>
-  </mat-grid-list>
-</div>
-
-<!-- expansion panel -->
-<div *ngIf="showElements.expansion">
-  <mat-accordion multi="true" hideToggle>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>Angular Complete Guide</mat-panel-title>
-        <mat-panel-description>Total Duration: 42 hours</mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>this is the panel content. add course details</p>
-      <mat-action-row>
-        <button mat-button>Enroll</button>
-      </mat-action-row>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>Angular Material</mat-panel-title>
-        <mat-panel-description>Total Duration: 2 hours</mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>this is the panel content. add course details</p>
-      <mat-action-row>
-        <button mat-button>Enroll</button>
-      </mat-action-row>
-    </mat-expansion-panel>
-  </mat-accordion>
-</div>
-
-<!-- card -->
-<div *ngIf="showElements.card">
-  <mat-card>
-    <mat-card-title>Card Title</mat-card-title>
-    <mat-card-content>add some content in the card</mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-flat-button>Login</button>
-    </mat-card-actions>
-  </mat-card>
-</div>
-
-<!-- tabs -->
-<div *ngIf="showElements.tabs">
-  <mat-tab-group #tabRef (selectedTabChange)="log(tabRef)">
-    <mat-tab label="Angular">Angular Content</mat-tab>
-    <mat-tab label="React">React Content</mat-tab>
-    <mat-tab label="Vue">Vue Content</mat-tab>
-  </mat-tab-group>
-</div>
-
-<!-- stepper -->
-<div *ngIf="showElements.stepper">
-  <mat-horizontal-stepper linear>
-    <mat-step completed="true" label="Confirm Order">review your order</mat-step>
-    <mat-step completed="false" optional label="Shipping Address">enter your address
-      <div>
-        <button mat-flat-button matStepperPrevious>Prev</button>
-        <button mat-flat-button matStepperNext>Next</button>
-      </div>
-    </mat-step>
-    <mat-step completed="false" label="Payment">complete your payment</mat-step>
-  </mat-horizontal-stepper>
-
-  <mat-vertical-stepper>
-    <mat-step completed="true" label="Delivered">please write a review</mat-step>
-    <mat-step completed="false" optional label="Order Shipped">order has left
-      <div>
-        <button mat-flat-button matStepperPrevious>Prev</button>
-        <button mat-flat-button matStepperNext>Next</button>
-      </div>
-    </mat-step>
-    <mat-step completed="false" label="Order Placed">your order is confirmed</mat-step>
-  </mat-vertical-stepper>
-</div>
-
-<!-- form and input -->
-<div *ngIf="showElements.formField" style="margin:10px">
-  <!-- floatLabel="auto, always, never" -->
-  <!-- appearance="legacy, standard, fill, outline" -->
-  <mat-form-field floatLabel="auto" hideRequiredMarker appearance="outline">
-    <mat-label>First Name</mat-label>
-    <input matInput required />
-    <mat-hint>min 5 characters</mat-hint>
-  </mat-form-field>
-
-  <!-- <button mat-flat-button (click)="selectedValue=['angular','react']" >Select Angular and React</button> -->
-  <button mat-flat-button (click)="invertUISkills()">Invert Selection</button>
-  <mat-form-field>
-    <mat-label>FrontEnd</mat-label>
-    <mat-select multiple [(value)]="selectedUISkills" (selectionChange)="uiSelectionChanged(selectedUISkills)">
-      <mat-option value="angular">Angular</mat-option>
-      <mat-option value="react">React</mat-option>
-      <mat-option value="vue">Vue</mat-option>
-    </mat-select>
-    <mat-hint> <button mat-button>add funding type <mat-icon>add</mat-icon> </button> </mat-hint>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Topic</mat-label>
-    <mat-select [(value)]="selectedValue" multiple (selectionChange)="log(selectedValue)">
-      <mat-option value="none">None</mat-option>
-      <mat-optgroup label="Web">
-        <mat-option value="angular">Angular</mat-option>
-        <mat-option value="react">React</mat-option>
-        <mat-option value="vue">Vue</mat-option>
-      </mat-optgroup>
-      <mat-optgroup label="mobile">
-        <mat-option value="ionic">Ionic</mat-option>
-        <mat-option value="react native">React Native</mat-option>
-      </mat-optgroup>
-    </mat-select>
-  </mat-form-field>
-  selected topic is:{{selectedValue}}
-</div>
-
-<!-- tooltip -->
-<div *ngIf="showElements.tooltip">
-  <button mat-raised-button matTooltip="Welcome to CodeEvolution" matTooltipPosition="below" matTooltipShowDelay="1500"
-    matTooltipHideDelay="1000">hello</button>
-</div>
-
-<!-- autocomplete -->
-<div *ngIf="showElements.autocomplete">
-  <mat-form-field>
-    <input type="text" matInput [matAutocomplete]="auto" />
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-      <mat-option *ngFor="let skill of uiSkills" [value]="skill">
-        {{skill.name}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-
-  <mat-form-field>
-    <input type="text" matInput [matAutocomplete]="autoNames" [formControl]="uiSkillFormCtrl" />
-    <mat-hint>autocomplete with filter</mat-hint>
-    <mat-autocomplete #autoNames="matAutocomplete">
-      <mat-option *ngFor="let skill of filteredUISkills | async" [value]="skill">
-        {{skill}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-</div>
-
-<!-- checkbox -->
-<div *ngIf="showElements.checkbox" class="m-4">
-  <mat-checkbox>Subscribe</mat-checkbox><br>
-  <mat-checkbox color="primary">Subscribe</mat-checkbox><br>
-  <mat-checkbox color="warn">Subscribe</mat-checkbox><br>
-  <mat-checkbox labelPosition="before">Subscribe</mat-checkbox>
-</div>
-
-<!-- radio -->
-<!-- https://material.angular.io/components/radio/examples -->
-<div *ngIf="showElements.radio" class="m-4">
-  <mat-radio-group>
-    <mat-radio-button value="angular">Angular</mat-radio-button>
-    <mat-radio-button value="react" color="primary">React</mat-radio-button>
-    <mat-radio-button value="vue" color="warn">Vue</mat-radio-button>
-  </mat-radio-group>
-</div>
-
-<!-- date picker -->
-<div *ngIf="showElements.datePicker">
-  <mat-form-field>
-    <input matInput [matDatepicker]="myDatePicker" [min]="minDate" [max]="maxDate"
-      [matDatepickerFilter]="noWeekendFilter" />
-    <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
-    <mat-datepicker #myDatePicker></mat-datepicker>
-  </mat-form-field>
-</div>
-
-
-<!-- snackbar -->
-<div *ngIf="showElements.snackbar" class="m-4">
-  <button mat-raised-button (click)="openSnackbar()">Delete</button>
-  <button mat-raised-button (click)="openCustomSnackbar()">Custom</button>
-</div>
-
-<!-- dialog -->
-<div *ngIf="showElements.dialog" class="m-4">
-  <button mat-stroked-button (click)="openDialog()">open</button>
-</div>
-
-<!-- table -->
-<div *ngIf="showElements.table" class="mat-elevation-z8 m-4" >
-  <mat-form-field class="m-4">
-    <input type="text" matInput placeholder="search" (keyup)="filterTable($event.target.value)" />
-  </mat-form-field>
-  <table mat-table [dataSource]="dataSource" matSort class="">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell mat-sort-header *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
-    (click)="onRowClick(row)"
-    ></tr>
-  </table>
-
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons ></mat-paginator>
-</div>
-
-<!-- virtual scrolling -->
-<div *ngIf="showElements.virtualScrolling">
-  <cdk-virtual-scroll-viewport class="numbers-wrapper" itemSize="100" >
-    <div class="number" *cdkVirtualFor="let n of numbers" >
-      {{n}}
-    </div>
-  </cdk-virtual-scroll-viewport>
-</div>
-
-<!-- multi select -->
-<div *ngIf="showElements.multiselect" class="my-mat-select-search" >
-  <app-multi-select></app-multi-select>
-</div>
+<!-- <app-reactive-forms></app-reactive-forms> -->

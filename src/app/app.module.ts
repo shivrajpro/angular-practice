@@ -1,11 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { TdfComponent } from './tdf/tdf.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { TdfComponent } from './tdf/tdf.component';
+import { AppRoutingModule } from "./app-routing.module";
+import { RouteService } from "./services/route.service";
 
 @NgModule({
   declarations: [
@@ -15,9 +15,10 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [RouteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

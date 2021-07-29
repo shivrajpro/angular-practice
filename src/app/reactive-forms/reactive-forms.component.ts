@@ -70,7 +70,7 @@ export class ReactiveFormsComponent implements OnInit {
       }),
     });
 
-    console.log('>> ',routerService.getPreviousUrl());
+    // console.log('>> in reactive',routerService.getPreviousUrl());
     
   }
 

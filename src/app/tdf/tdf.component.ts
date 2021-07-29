@@ -1,4 +1,6 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { RouteService } from '../services/route.service';
 
 @Component({
   selector: 'app-tdf',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TdfComponent implements OnInit {
 
-  constructor() { }
+  constructor(private routeService:RouteService, private location:Location) { }
 
   ngOnInit(): void {
+    this.routeService.getPreviousUrl();
   }
 
+  onBackClick(){
+    this.location.back();
+  }
 }

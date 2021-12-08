@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="false" class="container">
   <div class="row">
     <div class="col-xs-12">
       <button
@@ -56,3 +56,9 @@
     </div>
   </div>
 </div>
+<img [src]="imgURL" id="golf" height="400" width="400" crossorigin="anonymous" hidden />
+<div id="imgDiv" [style.background-image]="bgImg">
+  
+</div>
+<button (click)="onCapture()" >Capture</button>
+<button (click)="getBase64()" >Base 64</button>

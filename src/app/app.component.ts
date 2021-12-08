@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import html2canvas from 'html2canvas';
+import { NgxCaptureService } from 'ngx-capture';
 
 @Component({
   selector: 'app-root',
@@ -14,25 +15,32 @@ export class AppComponent {
   value = 5;
   imgURL = "https://images.unsplash.com/photo-1611374243147-44a702c2d44c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80";
 
-  bgImg = "url("+this.imgURL+")";
+  bgImg = "url(" + this.imgURL + ")";
+  @ViewChild('screen', { static: true }) screen: any;
 
-  onCapture(){
-    html2canvas(document.querySelector("#imgDiv")).then(function(canvas) {
-      console.log("qq canvas",canvas);
+  constructor(private captureService:NgxCaptureService){
+
+  }
+
+  onCapture() {
+    /*
+    html2canvas(document.querySelector("#imgDiv")).then(function (canvas) {
+      console.log("qq canvas", canvas);
       document.body.appendChild(canvas);
-  });
-  
-}
+    });
+    */
 
+    this.captureService.getImage(this.screen.nativeElement, true).subscribe(img=>{
+      console.log('qq img',img);
+      this.imgURL = img;
+    })    
+  }
 
-setBgImage(){
+  setBgImage() {
     const base64 = this.getBase64Image(document.getElementById("golf"));
-    console.log("qq base64",base64);
-    this.bgImg = "url("+base64+")";
-}
-
-
-
+    console.log("qq base64", base64);
+    this.bgImg = "url(" + base64 + ")";
+  }
   getBase64Image(img) {
     var canvas = document.createElement("canvas");
     canvas.width = img.width;
@@ -44,12 +52,12 @@ setBgImage(){
   }
 
 
-  getBase64(){
-    fetch("https://api.allorigins.win/raw?url="+this.imgURL).then((res)=>{
-      console.log("qq res",res);
+  getBase64() {
+    fetch("https://api.allorigins.win/raw?url=" + this.imgURL).then((res) => {
+      console.log("qq res", res);
     })
   }
-  
+
 
   /*
   Why do we need base64?

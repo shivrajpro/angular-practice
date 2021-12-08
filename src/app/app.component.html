@@ -56,9 +56,12 @@
     </div>
   </div>
 </div>
-<img [src]="imgURL" id="golf" height="400" width="400" crossorigin="anonymous" hidden />
-<div id="imgDiv" [style.background-image]="bgImg">
-  
+<div #screen [style.background-image]="bgImg">
+  <h1>Hey!</h1>
+  <p>some content</p>
 </div>
-<button (click)="onCapture()" >Capture</button>
-<button (click)="getBase64()" >Base 64</button>
+<button (click)="onCapture()">Take</button>
+<button (click)="setBgImage()">Base64</button>
+<img id="golf" [src]="imgURL" alt="input" height="300" width="300" crossorigin="anonymous" >
+<h2>Output below</h2>
+<img [src]="imgURL" alt="output">

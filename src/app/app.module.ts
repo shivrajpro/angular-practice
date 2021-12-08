@@ -17,7 +17,7 @@ import { UnlessDirective } from './unless.directive';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

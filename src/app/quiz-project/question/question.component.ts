@@ -9,6 +9,10 @@ import { QuestionService } from 'src/app/service/question.service';
 export class QuestionComponent implements OnInit {
 
   name:string = '';
+  questionsList:any = [];
+  currentQuestion:number = 0;
+  counter:number = 60;
+  points:number = 0;
 
 constructor(private questionService: QuestionService) { }
 
@@ -20,9 +24,18 @@ constructor(private questionService: QuestionService) { }
 
   getAllQuestions(){
     this.questionService.getQuestionsJson()
-    .subscribe(res=>{
-      console.log(' res',res);
-      
+    .subscribe(response=>{
+      this.questionsList = response.questions;
     })
   }
+
+
+  nextQuestion(){
+    this.currentQuestion++;
+  }
+
+  prevQuestion(){
+    this.currentQuestion--;
+  }
+
 }

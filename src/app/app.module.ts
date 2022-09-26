@@ -6,12 +6,16 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
 import { TdfComponent } from './tdf/tdf.component';
 import { AppRoutingModule } from "./app-routing.module";
 import { RouteService } from "./services/route.service";
+import { WelcomeComponent } from './quiz-project/welcome/welcome.component';
+import { QuestionComponent } from './quiz-project/question/question.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TdfComponent,
-    ReactiveFormsComponent
+    ReactiveFormsComponent,
+    WelcomeComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,

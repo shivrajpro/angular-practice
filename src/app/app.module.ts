@@ -8,7 +8,8 @@ import { AppRoutingModule } from "./app-routing.module";
 import { RouteService } from "./services/route.service";
 import { WelcomeComponent } from './quiz-project/welcome/welcome.component';
 import { QuestionComponent } from './quiz-project/question/question.component';
-
+import { QuestionService } from './service/question.service'
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,9 +21,10 @@ import { QuestionComponent } from './quiz-project/question/question.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [RouteService],
+  providers: [RouteService, QuestionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

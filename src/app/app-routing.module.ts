@@ -14,19 +14,19 @@ const routes: Routes = [
     path:'reactive',
     component:ReactiveFormsComponent
   },
-  {
-    path:'',
-    redirectTo:'welcome',
-    pathMatch:'full'
-  },
-  {
-    path:'welcome',
-    component:WelcomeComponent
-  },
-  {
-    path:'question',
-    component:QuestionComponent
-  }
+  // {
+  //   path:'',
+  //   redirectTo:'welcome',
+  //   pathMatch:'full'
+  // },
+  // {
+  //   path:'welcome',
+  //   component:WelcomeComponent
+  // },
+  // {
+  //   path:'question',
+  //   component:QuestionComponent
+  // }
 ];
 
 @NgModule({

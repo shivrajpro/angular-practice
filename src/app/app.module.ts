@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
@@ -11,6 +11,9 @@ import { QuestionComponent } from './quiz-project/question/question.component';
 import { QuestionService } from './service/question.service'
 import { HttpClientModule } from '@angular/common/http';
 import { ChangeBgDirective } from './directives/change-bg.directive';
+import { MaterialModule } from './material/material.module';
+import { TodoComponent } from './todo-project/todo/todo.component'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,13 +21,17 @@ import { ChangeBgDirective } from './directives/change-bg.directive';
     ReactiveFormsComponent,
     WelcomeComponent,
     QuestionComponent,
-    ChangeBgDirective
+    ChangeBgDirective,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [RouteService, QuestionService],
   bootstrap: [AppComponent]

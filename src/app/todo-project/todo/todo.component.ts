@@ -70,5 +70,7 @@ export class TodoComponent implements OnInit {
 
     this.editMode = false;
     this.updateIndex = null;
+
+    this.todoForm.reset();
   }
 }

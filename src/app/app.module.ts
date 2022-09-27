@@ -14,6 +14,7 @@ import { ChangeBgDirective } from './directives/change-bg.directive';
 import { MaterialModule } from './material/material.module';
 import { TodoComponent } from './todo-project/todo/todo.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {DragDropModule} from '@angular/cdk/drag-drop'
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DragDropModule
   ],
   providers: [RouteService, QuestionService],
   bootstrap: [AppComponent]

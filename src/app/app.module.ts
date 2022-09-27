@@ -10,13 +10,15 @@ import { WelcomeComponent } from './quiz-project/welcome/welcome.component';
 import { QuestionComponent } from './quiz-project/question/question.component';
 import { QuestionService } from './service/question.service'
 import { HttpClientModule } from '@angular/common/http';
+import { ChangeBgDirective } from './directives/change-bg.directive';
 @NgModule({
   declarations: [
     AppComponent,
     TdfComponent,
     ReactiveFormsComponent,
     WelcomeComponent,
-    QuestionComponent
+    QuestionComponent,
+    ChangeBgDirective
   ],
   imports: [
     BrowserModule,

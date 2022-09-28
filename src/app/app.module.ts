@@ -8,13 +8,17 @@ import { AppRoutingModule } from "./app-routing.module";
 import { RouteService } from "./services/route.service";
 import { WelcomeComponent } from './quiz-project/welcome/welcome.component';
 import { QuestionComponent } from './quiz-project/question/question.component';
-import { QuestionService } from './service/question.service'
+import { QuestionService } from './services/question.service'
 import { HttpClientModule } from '@angular/common/http';
 import { ChangeBgDirective } from './directives/change-bg.directive';
 import { MaterialModule } from './material/material.module';
 import { TodoComponent } from './todo-project/todo/todo.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {DragDropModule} from '@angular/cdk/drag-drop'
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { FlipkartComponent } from './flipkart-cart-clone/flipkart/flipkart.component';
+import { HeaderComponent } from './flipkart-cart-clone/header/header.component';
+import { CartComponent } from './flipkart-cart-clone/cart/cart.component';
+import { ProductsComponent } from './flipkart-cart-clone/products/products.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +27,11 @@ import {DragDropModule} from '@angular/cdk/drag-drop'
     WelcomeComponent,
     QuestionComponent,
     ChangeBgDirective,
-    TodoComponent
+    TodoComponent,
+    FlipkartComponent,
+    HeaderComponent,
+    CartComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

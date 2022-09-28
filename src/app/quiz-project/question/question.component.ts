@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { interval } from 'rxjs';
-import { QuestionService } from 'src/app/service/question.service';
+import { QuestionService } from 'src/app/services/question.service';
 
 @Component({
   selector: 'app-question',

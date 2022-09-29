@@ -7,13 +7,13 @@ import { ApiService } from "../../services/api.service";
 })
 export class ProductsComponent implements OnInit {
   productList:any;
+  allProducts:any;
   searchKey: string = '';
   constructor(private api:ApiService) { }
 
   ngOnInit(): void {
     this.api.getProducts().subscribe((res)=>{
-      this.productList=res;
-
+      this.productList= res;
       this.productList.forEach(p => {
         if(p.category == "men's clothing" || p.category == "women's clothing") 
           p.category = 'fashion';
@@ -21,6 +21,7 @@ export class ProductsComponent implements OnInit {
 
       console.log(">>  prod list",this.productList);
       
+      this.allProducts = this.productList;
       this.api.search.subscribe((v)=>{
         this.searchKey = v;
       })
@@ -28,7 +29,9 @@ export class ProductsComponent implements OnInit {
   }
 
   filterProducts(category:string){
-
+      this.productList = this.allProducts.filter((p)=>{
+        return p.category == category || category == ''
+      })
   }
 
 }

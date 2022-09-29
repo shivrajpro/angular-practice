@@ -6,7 +6,10 @@
             &nbsp;
             <strong>Flipkart</strong>
             <div class="form-group">
-                <input type="text" class="form-control mx-4" placeholder="search products" >
+                <input type="text" class="form-control mx-4" 
+                [(ngModel)]="searchQuery"
+                (keyup)="onSearch($event)"
+                placeholder="search products" >
                 <i class="fa fa-search search-icon"></i>
             </div>
         </div>

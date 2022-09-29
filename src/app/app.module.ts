@@ -16,9 +16,9 @@ import { TodoComponent } from './todo-project/todo/todo.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { FlipkartComponent } from './flipkart-cart-clone/flipkart/flipkart.component';
-import { HeaderComponent } from './flipkart-cart-clone/header/header.component';
 import { CartComponent } from './flipkart-cart-clone/cart/cart.component';
-import { ProductsComponent } from './flipkart-cart-clone/products/products.component'
+import { ProductsComponent } from './flipkart-cart-clone/products/products.component';
+import { FilterPipe } from './flipkart-cart-clone/pipes/filter.pipe'
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,9 +29,9 @@ import { ProductsComponent } from './flipkart-cart-clone/products/products.compo
     ChangeBgDirective,
     TodoComponent,
     FlipkartComponent,
-    HeaderComponent,
     CartComponent,
-    ProductsComponent
+    ProductsComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

@@ -7,7 +7,7 @@
             <strong>Flipkart</strong>
             <div class="form-group">
                 <input type="text" class="form-control mx-4" 
-                [(ngModel)]="searchQuery"
+                [(ngModel)]="searchTerm"
                 (keyup)="onSearch($event)"
                 placeholder="search products" >
                 <i class="fa fa-search search-icon"></i>
@@ -15,7 +15,7 @@
         </div>
         <div style="cursor: pointer"  routerLink="/cart">
             <i style="font-size: 3rem;" class="fa fa-cart-plus" ></i>
-            <div class="badge bg-danger">5</div>
+            <div class="badge bg-danger"> {{totalItem}} </div>
         </div>
     </div>
 </header>

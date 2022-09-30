@@ -1,23 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
-
+import { CartService } from "../../services/cart.service";
 @Component({
   selector: 'app-flipkart',
   templateUrl: './flipkart.component.html',
   styleUrls: ['./flipkart.component.css']
 })
 export class FlipkartComponent implements OnInit {
-  searchQuery: string = '';
-
-  constructor(private apiService: ApiService) { }
+  public totalItem : number = 0;
+  public searchTerm !: string;
+  constructor(private cartService : CartService) { }
 
   ngOnInit(): void {
+    this.cartService.getProducts()
+    .subscribe(res=>{
+      this.totalItem = res.length;
+    })
   }
 
-  onSearch(event:Event){
-    const q = (event.target as HTMLInputElement).value;
-
-    this.apiService.search.next(q);
+  onSearch(event:any){
+    this.searchTerm = (event.target as HTMLInputElement).value;
+    // console.log(this.searchTerm);
+    this.cartService.search.next(this.searchTerm);
   }
-
 }

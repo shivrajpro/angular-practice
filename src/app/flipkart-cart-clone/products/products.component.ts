@@ -1,37 +1,47 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from "../../services/api.service";
+import { ApiService } from '../../services/api.service';
+import { CartService } from '../../services/cart.service';
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  productList:any;
-  allProducts:any;
-  searchKey: string = '';
-  constructor(private api:ApiService) { }
+
+  public productList : any ;
+  public filterCategory : any
+  searchKey:string ="";
+  constructor(private api : ApiService, private cartService : CartService) { }
 
   ngOnInit(): void {
-    this.api.getProducts().subscribe((res)=>{
-      this.productList= res;
-      this.productList.forEach(p => {
-        if(p.category == "men's clothing" || p.category == "women's clothing") 
-          p.category = 'fashion';
+    this.api.getProduct()
+    .subscribe(res=>{
+      this.productList = res;
+      this.filterCategory = res;
+      this.productList.forEach((a:any) => {
+        if(a.category ==="women's clothing" || a.category ==="men's clothing"){
+          a.category ="fashion"
+        }
+        Object.assign(a,{quantity:1,total:a.price});
       });
-
-      console.log(">>  prod list",this.productList);
-      
-      this.allProducts = this.productList;
-      this.api.search.subscribe((v)=>{
-        this.searchKey = v;
-      })
+      console.log(this.productList)
     });
-  }
 
-  filterProducts(category:string){
-      this.productList = this.allProducts.filter((p)=>{
-        return p.category == category || category == ''
-      })
+    this.cartService.search.subscribe((val:any)=>{
+      this.searchKey = val;
+    })
+  }
+  onAddToCart(item: any){
+    this.cartService.addtoCart(item);
+  }
+  filter(category:string){
+    this.filterCategory = this.productList
+    .filter((a:any)=>{
+      if(a.category == category || category==''){
+        return a;
+      }
+    })
   }
 
 }

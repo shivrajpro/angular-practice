@@ -18,7 +18,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { FlipkartComponent } from './flipkart-cart-clone/flipkart/flipkart.component';
 import { CartComponent } from './flipkart-cart-clone/cart/cart.component';
 import { ProductsComponent } from './flipkart-cart-clone/products/products.component';
-import { FilterPipe } from './flipkart-cart-clone/pipes/filter.pipe'
+import { FilterPipe } from './flipkart-cart-clone/pipes/filter.pipe';
+import { GoogleStartComponent } from './google-start/google-start.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import { FilterPipe } from './flipkart-cart-clone/pipes/filter.pipe'
     FlipkartComponent,
     CartComponent,
     ProductsComponent,
-    FilterPipe
+    FilterPipe,
+    GoogleStartComponent
   ],
   imports: [
     BrowserModule,

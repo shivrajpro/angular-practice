@@ -19,7 +19,8 @@ import { FlipkartComponent } from './flipkart-cart-clone/flipkart/flipkart.compo
 import { CartComponent } from './flipkart-cart-clone/cart/cart.component';
 import { ProductsComponent } from './flipkart-cart-clone/products/products.component';
 import { FilterPipe } from './flipkart-cart-clone/pipes/filter.pipe';
-import { GoogleStartComponent } from './google-start/google-start.component'
+import { GoogleStartComponent } from './google-start/google-start.component';
+import { MeraBharatComponent } from './mera-bharat/mera-bharat.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { GoogleStartComponent } from './google-start/google-start.component'
     CartComponent,
     ProductsComponent,
     FilterPipe,
-    GoogleStartComponent
+    GoogleStartComponent,
+    MeraBharatComponent
   ],
   imports: [
     BrowserModule,

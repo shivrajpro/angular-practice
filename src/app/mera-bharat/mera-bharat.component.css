@@ -35,6 +35,10 @@ nav .menu a{
     font-weight: bold;
 }
 
+nav .menu a:first-child{
+    color: #00b894;
+}
+
 main{
     height: 85vh;
     width: 100%;
@@ -51,4 +55,78 @@ section h3{
     font-weight: bold;
     letter-spacing: 3px;
     text-shadow: 1px 1px 2px #000;
+}
+
+section h1{
+    margin: 30px 0px 20px 0;
+    font-size: 55px;
+    font-weight: 700;
+    text-shadow: 2px 1px 5px #000;
+    text-transform: uppercase;
+}
+
+section p{
+    font-size: 25px;
+    word-spacing: 2px;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 1px #000;
+}
+
+section a{
+    padding: 12px 30px;
+    border-radius: 4px;
+    outline: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 1px;
+    margin: 0 4px;
+}
+
+section .btn1{
+    background-color: #fff;
+    color: #000;
+    transition: all 0.5s ease;
+}
+
+section .btn2{
+    background-color: #00b894;
+    color: #fff;
+}
+
+section .btn1:hover{
+    background-color: #00b894;
+    color: #fff;
+}
+
+section .btn2:hover{
+    background-color: #fff;
+    color: #000;
+}
+.change-content::after{
+    content: '';
+    color: #00b894;
+    animation: changetext 10s infinite linear;
+}
+
+@keyframes changetext {
+    0%{
+        content:"Darjeeling";
+    }
+    20%{
+        content: "Agra";
+    }
+    35%{
+        content: "Mumbai";
+    }
+    60%{
+        content: "Kerala";
+    }
+    80%{
+        content: "Delhi";
+    }
+    100%{
+        content:"Jaipur";
+    }
 }

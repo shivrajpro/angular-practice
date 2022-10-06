@@ -6,3 +6,15 @@ html, body { height: 100%; }
     box-sizing: border-box;
     font-family: 'Josefin Sans', sans-serif;
 }
+
+html{
+    font-size: 16px;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    font-size: 18px;
+}

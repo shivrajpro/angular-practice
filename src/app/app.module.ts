@@ -20,7 +20,10 @@ import { CartComponent } from './flipkart-cart-clone/cart/cart.component';
 import { ProductsComponent } from './flipkart-cart-clone/products/products.component';
 import { FilterPipe } from './flipkart-cart-clone/pipes/filter.pipe';
 import { GoogleStartComponent } from './google-start/google-start.component';
-import { MeraBharatComponent } from './mera-bharat/mera-bharat.component'
+import { MeraBharatComponent } from './mera-bharat/mera-bharat.component';
+import { FoodOrderComponent } from './food-order/food-order.component';
+import { HeaderComponent } from './food-order/header/header.component';
+import { HomeComponent } from './food-order/home/home.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +38,10 @@ import { MeraBharatComponent } from './mera-bharat/mera-bharat.component'
     ProductsComponent,
     FilterPipe,
     GoogleStartComponent,
-    MeraBharatComponent
+    MeraBharatComponent,
+    FoodOrderComponent,
+    HeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -25,7 +25,9 @@ import { FoodOrderComponent } from './food-order/food-order.component';
 import { HeaderComponent } from './food-order/header/header.component';
 import { HomeComponent } from './food-order/home/home.component';
 import { SearchComponent } from './food-order/search/search.component';
-import { TagsComponent } from './food-order/tags/tags.component'
+import { TagsComponent } from './food-order/tags/tags.component';
+import { CartPageComponent } from './food-order/cart-page/cart-page.component';
+import { FoodPageComponent } from './food-order/food-page/food-page.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +47,9 @@ import { TagsComponent } from './food-order/tags/tags.component'
     HeaderComponent,
     HomeComponent,
     SearchComponent,
-    TagsComponent
+    TagsComponent,
+    CartPageComponent,
+    FoodPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+div{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+div a{
+    background-color: #c3c2c2;
+    border-radius: 10rem;
+    margin: .2rem .15rem;
+    padding: .3rem 1rem;
+}

@@ -7,7 +7,7 @@ import { Tag } from "../shared/models/tag";
   styleUrls: ['./tags.component.css']
 })
 export class TagsComponent implements OnInit {
-  tags:Tag[]=[];
+  tags:Tag[] = [];
   constructor(private fs:FoodService) { }
 
   ngOnInit(): void {

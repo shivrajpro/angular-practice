@@ -23,7 +23,8 @@ import { GoogleStartComponent } from './google-start/google-start.component';
 import { MeraBharatComponent } from './mera-bharat/mera-bharat.component';
 import { FoodOrderComponent } from './food-order/food-order.component';
 import { HeaderComponent } from './food-order/header/header.component';
-import { HomeComponent } from './food-order/home/home.component'
+import { HomeComponent } from './food-order/home/home.component';
+import { SearchComponent } from './food-order/search/search.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { HomeComponent } from './food-order/home/home.component'
     MeraBharatComponent,
     FoodOrderComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

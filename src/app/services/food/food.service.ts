@@ -24,7 +24,7 @@ export class FoodService {
         id:2,
         price:50,
         name:"Shoe 2",
-        favorite : false,
+        favorite : true,
         star:4,
         tags:['Fastfood', 'Pizza', 'Lunch'],
         imageUrl:'assets/images/formal_brown.jpg',

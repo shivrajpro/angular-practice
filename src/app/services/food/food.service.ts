@@ -7,6 +7,32 @@ export class FoodService {
 
   constructor() { }
 
+  getAllTags(){
+    return [
+      {
+        name:'All',
+        count: 8
+      },
+      {
+        name:'Fastfood',
+        count: 4
+      },
+      {
+        name:"Pizza",
+        count:2
+      },
+      {
+        name:"Lunch",
+        count: 1
+      }
+    ]
+  }
+
+  getAllFoodsByTag(tag): any {
+    return tag == 'All' ? this.getAll()
+      : this.getAll().filter((f) => f.tags.includes(tag));
+  }
+
   getAll(): Foods[]{
     return [
       {
@@ -15,7 +41,7 @@ export class FoodService {
         name:"Shoe 1",
         favorite : false,
         star:4,
-        tags:['Fastfood', 'Pizza', 'Lunch'],
+        tags:['Fastfood', 'Pizza', 'lunch'],
         imageUrl:'assets/images/formal_brown.jpg',
         cookTime:'25-30',
         origins:['italy']        

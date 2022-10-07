@@ -14,12 +14,14 @@ export class HomeComponent implements OnInit {
     this.route.params.subscribe((params)=>{
       if(params.searchItem){
         this.foods = this.fs.getAll().filter((f)=>f.name.toLowerCase().includes(params.searchItem.toLowerCase()))
-      }else{
+      }
+      else if(params.tag){
+        this.foods = this.fs.getAllFoodsByTag(params.tag)
+      }
+      else{
         this.foods = this.fs.getAll();
       }
     })
-
-
   }
 
 }

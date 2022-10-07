@@ -24,7 +24,8 @@ import { MeraBharatComponent } from './mera-bharat/mera-bharat.component';
 import { FoodOrderComponent } from './food-order/food-order.component';
 import { HeaderComponent } from './food-order/header/header.component';
 import { HomeComponent } from './food-order/home/home.component';
-import { SearchComponent } from './food-order/search/search.component'
+import { SearchComponent } from './food-order/search/search.component';
+import { TagsComponent } from './food-order/tags/tags.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,8 @@ import { SearchComponent } from './food-order/search/search.component'
     FoodOrderComponent,
     HeaderComponent,
     HomeComponent,
-    SearchComponent
+    SearchComponent,
+    TagsComponent
   ],
   imports: [
     BrowserModule,

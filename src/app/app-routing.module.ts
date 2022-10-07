@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path:'search/:searchItem',
     component: HomeComponent
+  },
+  {
+    path:'tag/:tag',
+    component:HomeComponent
   }
 ];
 

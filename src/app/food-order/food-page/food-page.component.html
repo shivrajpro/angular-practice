@@ -1,1 +1,26 @@
-<p>food-page works!</p>
+<div class="container">
+    <img [src]="food.imageUrl" [alt]="food.name" width="100" height="100">
+    <div class="details">
+        <div class="header">
+            <span class="name">
+                {{food.name}}
+            </span>
+
+            <i class="fa favorite" [class.fa-heart]="food.favorite"
+            [class.fa-heart-o]="!food.favorite"
+            aria-hidden="true"></i>
+            <div class="origins" *ngFor="let origin of food.origins" >
+                {{origin}}
+            </div>  
+            <div class="tags">
+                <app-tags [foodPageTags]="food.tags" ></app-tags>
+            </div> 
+            <div class="cook-time">
+                Time to cook about {{food.cookTime}} minutes
+            </div>   
+            <div class="price">
+                {{food.price | currency}}
+            </div>     
+        </div>
+    </div>
+</div>

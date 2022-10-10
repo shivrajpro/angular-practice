@@ -7,6 +7,9 @@ export class FoodService {
 
   constructor() { }
 
+  getFoodById(foodId:number){
+    return this.getAll().find((f)=>f.id == foodId);
+  }
   getAllTags(){
     return [
       {

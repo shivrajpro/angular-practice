@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FoodService } from 'src/app/services/food/food.service';
 import { Tag } from "../shared/models/tag";
 @Component({
@@ -8,10 +8,12 @@ import { Tag } from "../shared/models/tag";
 })
 export class TagsComponent implements OnInit {
   tags:Tag[] = [];
+  @Input() foodPageTags:Tag[];
   constructor(private fs:FoodService) { }
 
   ngOnInit(): void {
-    this.tags = this.fs.getAllTags();
+    if(!this.foodPageTags)
+      this.tags = this.fs.getAllTags();
   }
 
 }

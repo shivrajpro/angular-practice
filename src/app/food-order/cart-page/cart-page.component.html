@@ -1,1 +1,39 @@
 <p>cart-page works!</p>
+<ul>
+    <li *ngFor="let item of cart.items" >
+        <img [src]="item.food.imageUrl" [alt]="item.food.name" width="200" height="200" />
+
+        <div class="name">
+            {{item.food.name}}
+        </div>
+        <div class="quantity">
+           Quantity {{item.quantity}}
+        </div>
+
+        <select #quantitySelect (change)="changeQuantity(item, quantitySelect.value)" >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+
+        <div class="price">
+            {{item.food.price * item.quantity | currency}}
+        </div>
+
+        <div>
+            <button class="btn btn-danger" (click)="removeFromCart(item)" >
+                <i class="fa fa-trash"></i>
+            </button>
+        </div>
+    </li>
+</ul>
+<div *ngIf="cart.items.length" class="checkout">
+    <div class="food-count">
+        {{cart.items.length}}
+    </div>
+    <div class="total-price">
+        {{cart.totalPrice}}
+    </div>
+</div>

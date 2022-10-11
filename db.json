@@ -1,7 +1,7 @@
 {
   "posts": [
     {
-      "name": "test1",
+      "name": "test1 update",
       "email": "test@resto.com",
       "mobile": 9876543211,
       "address": "solapur",
@@ -9,20 +9,36 @@
       "id": 1
     },
     {
-      "name": "second test",
-      "email": "second@test.com",
-      "mobile": 36345234234,
-      "address": "second address",
-      "services": "chai coffee",
+      "name": "masaledar",
+      "email": "masaledar@test.com",
+      "mobile": 56434532414,
+      "address": "mundhwa",
+      "services": "biryani",
       "id": 2
     },
     {
-      "name": "test modal",
-      "email": "modal@test.com",
-      "mobile": 56789876543,
-      "address": "gaia apex",
-      "services": "java",
-      "id": 3
+      "name": "kalyani veg",
+      "email": "kalyani@test.com",
+      "mobile": 675355345,
+      "address": "keshavnagar",
+      "services": "pure veg resto",
+      "id": 4
+    },
+    {
+      "name": "burger king",
+      "email": "burger@test.com",
+      "mobile": 5764352223,
+      "address": "kalyani nagar",
+      "services": "burger",
+      "id": 5
+    },
+    {
+      "name": "cream corner",
+      "email": "cream@corner.com",
+      "mobile": 876532354,
+      "address": "chandni chowk",
+      "services": "pav bhaji",
+      "id": 6
     }
   ],
   "comments": [

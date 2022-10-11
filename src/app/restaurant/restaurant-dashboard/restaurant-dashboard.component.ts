@@ -11,6 +11,8 @@ import { Restaurant } from "../models/restaurant";
 export class RestaurantDashboardComponent implements OnInit {
   formValue:FormGroup;
   restaurantList: Restaurant[] = [];
+  restaurant: Restaurant;
+  editMode:boolean = false;
 
   constructor(private fb: FormBuilder, private apiService:ApiService) { }
 
@@ -23,20 +25,51 @@ export class RestaurantDashboardComponent implements OnInit {
       services:['']
     })
 
-    this.apiService.getRestaurant().subscribe((response:Restaurant[])=>{
+    this.getResto();
+  }
+
+  private getResto() {
+    this.apiService.getRestaurant().subscribe((response: Restaurant[]) => {
       this.restaurantList = response;
-      console.log("res",response);
-    })
+      console.log("res", response);
+    });
   }
 
   saveResto(){
     const resto = this.formValue.value;
 
-    this.apiService.postRestaurant(resto).subscribe((response)=>{
-      // console.log("res",response);
-      this.formValue.reset();
-      
-    })
+    if(this.editMode){
+      resto.id = this.restaurant.id;
+      this.apiService.updateRestaurant(resto, resto.id).subscribe((response)=>{
+        console.log('update', response);
+        this.getResto();
+        this.editMode = false;
+        this.formValue.reset();
+      })
+    }else{
+      this.apiService.postRestaurant(resto).subscribe((response)=>{
+        // console.log("res",response);
+        this.formValue.reset();
+        this.getResto();
+      })
+    }
+  }
+
+  onEditResto(restaurant){
+    this.editMode = true;
+    this.restaurant = restaurant;
+    this.formValue.patchValue(restaurant);
+  }
+
+  onDeleteResto(restaurant){
+    const confirmed = confirm("Are you sure to delete "+restaurant.name+" restaurant?")
+    if(confirmed){
+      this.apiService.deleteRestaurant(restaurant.id)
+      .subscribe((response)=>{
+        console.log("delete res",response)
+        this.getResto();
+      })
+    }
   }
 
 }

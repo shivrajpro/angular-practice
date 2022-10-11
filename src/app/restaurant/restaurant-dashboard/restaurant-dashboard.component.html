@@ -2,8 +2,11 @@
     <div class="container-fluid">
         <h2>Restaurant Record App</h2>
         <div class="d-flex">
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal">Add
-                Restaurant</button>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" 
+            (click)="formValue.reset()"
+            data-bs-target="#myModal">
+                Add Restaurant
+            </button>
         </div>
     </div>
 </nav>
@@ -35,25 +38,13 @@
             <td>{{restaurant.address}}</td>
             <td>{{restaurant.services}}</td>
             <td>
-                <button class="btn btn-info">Edit</button> |
-                <button class="btn btn-danger">
+                <button type="button" class="btn btn-info" 
+                data-bs-toggle="modal" data-bs-target="#myModal"
+                (click)="onEditResto(restaurant)">Edit</button> |
+                <button class="btn btn-danger" (click)="onDeleteResto(restaurant)" >
                     Delete
                 </button>
             </td>            
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Badnaam</td>
-            <td>badnaam@gmail.com</td>
-            <td>1242323423</td>
-            <td>Ranchi</td>
-            <td>Chai and Coffee</td>
-            <td>
-                <button class="btn btn-info">Edit</button> |
-                <button class="btn btn-danger">
-                    Delete
-                </button>
-            </td>
         </tr>
     </tbody>
 </table>
@@ -99,7 +90,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary" 
-                        data-bs-dismiss="modal" (click)="saveResto()" >Add Details</button>
+                        data-bs-dismiss="modal" (click)="saveResto()" >Save</button>
                     </div>
                 </form>
             </div>

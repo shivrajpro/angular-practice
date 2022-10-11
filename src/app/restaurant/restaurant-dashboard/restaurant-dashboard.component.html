@@ -27,6 +27,20 @@
         </tr>
     </thead>
     <tbody>
+        <tr *ngFor="let restaurant of restaurantList" >
+            <td>{{restaurant.id}}</td>
+            <td>{{restaurant.name}}</td>
+            <td>{{restaurant.email}}</td>
+            <td>{{restaurant.mobile}}</td>
+            <td>{{restaurant.address}}</td>
+            <td>{{restaurant.services}}</td>
+            <td>
+                <button class="btn btn-info">Edit</button> |
+                <button class="btn btn-danger">
+                    Delete
+                </button>
+            </td>            
+        </tr>
         <tr>
             <td>1</td>
             <td>Badnaam</td>
@@ -84,7 +98,8 @@
                     <!-- Modal footer -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Add Details</button>
+                        <button type="submit" class="btn btn-primary" 
+                        data-bs-dismiss="modal" (click)="saveResto()" >Add Details</button>
                     </div>
                 </form>
             </div>

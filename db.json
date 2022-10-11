@@ -1,19 +1,40 @@
 {
-    "posts":[
-        {
-            "id":1,
-            "title": "json-server",
-            "author":"typicode"
-        }
-    ],
-    "comments":[
-        {
-            "id":1,
-            "body":"some commnet",
-            "postId":1
-        }
-    ],
-    "profile":[{
-        "name":"typicode"
-    }]
+  "posts": [
+    {
+      "name": "test1",
+      "email": "test@resto.com",
+      "mobile": 9876543211,
+      "address": "solapur",
+      "services": "some service",
+      "id": 1
+    },
+    {
+      "name": "second test",
+      "email": "second@test.com",
+      "mobile": 36345234234,
+      "address": "second address",
+      "services": "chai coffee",
+      "id": 2
+    },
+    {
+      "name": "test modal",
+      "email": "modal@test.com",
+      "mobile": 56789876543,
+      "address": "gaia apex",
+      "services": "java",
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some commnet",
+      "postId": 1
+    }
+  ],
+  "profile": [
+    {
+      "name": "typicode"
+    }
+  ]
 }

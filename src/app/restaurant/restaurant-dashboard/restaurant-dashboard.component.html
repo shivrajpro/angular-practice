@@ -1,0 +1,93 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+        <h2>Restaurant Record App</h2>
+        <div class="d-flex">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#myModal">Add
+                Restaurant</button>
+        </div>
+    </div>
+</nav>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1>Restaurant Records Management</h1>
+        <p>You can save records of restaurant using Angular 12</p>
+        <a class="btn btn-primary" href="https://www.youtube.com" target="_blank">TestyCodeiz</a>
+    </div>
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Restaurant ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Address</th>
+            <th>Service</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Badnaam</td>
+            <td>badnaam@gmail.com</td>
+            <td>1242323423</td>
+            <td>Ranchi</td>
+            <td>Chai and Coffee</td>
+            <td>
+                <button class="btn btn-info">Edit</button> |
+                <button class="btn btn-danger">
+                    Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Enter Restaurant Details</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form [formGroup]="formValue" >
+                    <div class="mb-3 mt-3">
+                        <label for="name" class="form-label">Name:</label>
+                        <input type="text" formControlName="name" class="form-control" id="name" placeholder="Enter Restaurant Name"
+                            name="email">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" formControlName="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="mobile" class="form-label">Mobile:</label>
+                        <input type="number" formControlName="mobile" class="form-control" id="mobile" placeholder="Enter Mobile Number"
+                            name="pswd">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="address" class="form-label">Address:</label>
+                        <input type="text" formControlName="address" class="form-control" id="address" placeholder="Enter Address" name="email">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="services" class="form-label">Services:</label>
+                        <input type="text" formControlName="services" class="form-control" id="services" placeholder="Enter Services" name="email">
+                    </div>
+                    <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add Details</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

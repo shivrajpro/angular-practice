@@ -27,7 +27,9 @@ import { HomeComponent } from './food-order/home/home.component';
 import { SearchComponent } from './food-order/search/search.component';
 import { TagsComponent } from './food-order/tags/tags.component';
 import { CartPageComponent } from './food-order/cart-page/cart-page.component';
-import { FoodPageComponent } from './food-order/food-page/food-page.component'
+import { FoodPageComponent } from './food-order/food-page/food-page.component';
+import { RestaurantComponent } from './restaurant/restaurant.component';
+import { RestaurantDashboardComponent } from './restaurant/restaurant-dashboard/restaurant-dashboard.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +51,9 @@ import { FoodPageComponent } from './food-order/food-page/food-page.component'
     SearchComponent,
     TagsComponent,
     CartPageComponent,
-    FoodPageComponent
+    FoodPageComponent,
+    RestaurantComponent,
+    RestaurantDashboardComponent
   ],
   imports: [
     BrowserModule,

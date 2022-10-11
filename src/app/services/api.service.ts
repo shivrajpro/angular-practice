@@ -38,4 +38,16 @@ export class ApiService {
       return res;
     }))
   }
+
+  signUp(data){
+    return this.http.post('http://localhost:3000/signup', data).pipe(map((res)=>{
+      return res;
+    }))
+  }
+
+  login(){
+    return this.http.get('http://localhost:3000/signup').pipe(map((res)=>{
+      return res;
+    }))
+  }
 }

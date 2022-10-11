@@ -52,5 +52,12 @@
     {
       "name": "typicode"
     }
+  ],
+  "signup": [
+    {
+      "email": "test",
+      "password": "Test@123",
+      "id": 1
+    }
   ]
 }

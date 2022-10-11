@@ -29,7 +29,9 @@ import { TagsComponent } from './food-order/tags/tags.component';
 import { CartPageComponent } from './food-order/cart-page/cart-page.component';
 import { FoodPageComponent } from './food-order/food-page/food-page.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
-import { RestaurantDashboardComponent } from './restaurant/restaurant-dashboard/restaurant-dashboard.component'
+import { RestaurantDashboardComponent } from './restaurant/restaurant-dashboard/restaurant-dashboard.component';
+import { LoginComponent } from './restaurant/login/login.component';
+import { SignupComponent } from './restaurant/signup/signup.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +55,9 @@ import { RestaurantDashboardComponent } from './restaurant/restaurant-dashboard/
     CartPageComponent,
     FoodPageComponent,
     RestaurantComponent,
-    RestaurantDashboardComponent
+    RestaurantDashboardComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

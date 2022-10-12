@@ -1,11 +1,10 @@
-<div class="header mx-4">
-    <input type="text" class="form-control search-input mx-4" placeholder="Search" >
-    <button class="btn btn-success" routerLink="../new" >
-        <i class="fa fa-plus"></i> New
-    </button>
-</div>
-
 <div class="container">
+    <div class="header">
+        <input type="text" class="form-control search-input" placeholder="Search" >
+        <button class="btn btn-success mx-4" routerLink="../new" >
+            <i class="fa fa-plus"></i> New
+        </button>
+    </div>
     <div class="contacts-list">
         <div class="contact-card" *ngFor="let contact of contactList" >
             <div class="contact-image">
@@ -17,9 +16,9 @@
                 {{contact.mobile}}
             </div>
             <div class="contact-operations">
-                <i class="fa fa-eye"></i>
-                <i class="fa fa-pencil"></i>
-                <i class="fa fa-trash"></i>
+                <i class="fa fa-eye" routerLink="{{'../'+contact.id}}"></i>
+                <i class="fa fa-pencil" routerLink="{{'../'+contact.id}}/edit"></i>
+                <i class="fa fa-trash" (click)="onDeleteContact(contact.id)" ></i>
             </div>
         </div>
     </div>

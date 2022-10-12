@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IContact } from '../models/IContact';
 import { ContactService } from "../services/contact.service";
 @Component({
   selector: 'app-edit-contact',
@@ -23,6 +24,14 @@ export class EditContactComponent implements OnInit {
 
       if(this.editMode){
         this.contactId = params.id
+        this.contactService.getAllContacts()
+        .subscribe((response:IContact[])=>{
+          const contact = response.find((c)=>c.id == this.contactId);
+          if(contact)
+            this.contactForm.patchValue(contact);
+          else 
+            alert("Contact not found")
+        })
       }
     })
 

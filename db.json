@@ -59,5 +59,17 @@
       "password": "Test@123",
       "id": 1
     }
+  ],
+  "contacts": [
+    {
+      "name": "wgwegvwe",
+      "email": "wsevwev",
+      "photo": "verver",
+      "mobile": 23523523,
+      "company": "gversver",
+      "title": "vrevberb",
+      "groupId": "work",
+      "id": 1
+    }
   ]
 }

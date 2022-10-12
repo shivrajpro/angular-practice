@@ -1,0 +1,6 @@
+.header{
+    display: flex;
+}
+.search-input{
+    width: 20%;
+}

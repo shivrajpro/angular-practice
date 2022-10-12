@@ -1,1 +1,26 @@
-<p>contact-list works!</p>
+<div class="header mx-4">
+    <input type="text" class="form-control search-input mx-4" placeholder="Search" >
+    <button class="btn btn-success" routerLink="../new" >
+        <i class="fa fa-plus"></i> New
+    </button>
+</div>
+
+<div class="container">
+    <div class="contacts-list">
+        <div class="contact-card" *ngFor="let contact of contactList" >
+            <div class="contact-image">
+                Image: {{contact.photo}}
+            </div>
+            <div class="contact-details">
+                {{contact.name}}
+                {{contact.email}}
+                {{contact.mobile}}
+            </div>
+            <div class="contact-operations">
+                <i class="fa fa-eye"></i>
+                <i class="fa fa-pencil"></i>
+                <i class="fa fa-trash"></i>
+            </div>
+        </div>
+    </div>
+</div>

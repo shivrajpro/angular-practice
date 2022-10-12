@@ -32,7 +32,10 @@ import { RestaurantComponent } from './restaurant/restaurant.component';
 import { RestaurantDashboardComponent } from './restaurant/restaurant-dashboard/restaurant-dashboard.component';
 import { LoginComponent } from './restaurant/login/login.component';
 import { SignupComponent } from './restaurant/signup/signup.component';
-import { ContactManagerComponent } from './contact-manager/contact-manager.component'
+import { ContactManagerComponent } from './contact-manager/contact-manager.component';
+import { ContactDetailsComponent } from './contact-manager/contact-details/contact-details.component';
+import { EditContactComponent } from './contact-manager/edit-contact/edit-contact.component';
+import { ContactListComponent } from './contact-manager/contact-list/contact-list.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +62,10 @@ import { ContactManagerComponent } from './contact-manager/contact-manager.compo
     RestaurantDashboardComponent,
     LoginComponent,
     SignupComponent,
-    ContactManagerComponent
+    ContactManagerComponent,
+    ContactDetailsComponent,
+    EditContactComponent,
+    ContactListComponent
   ],
   imports: [
     BrowserModule,

@@ -31,7 +31,8 @@ import { FoodPageComponent } from './food-order/food-page/food-page.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { RestaurantDashboardComponent } from './restaurant/restaurant-dashboard/restaurant-dashboard.component';
 import { LoginComponent } from './restaurant/login/login.component';
-import { SignupComponent } from './restaurant/signup/signup.component'
+import { SignupComponent } from './restaurant/signup/signup.component';
+import { ContactManagerComponent } from './contact-manager/contact-manager.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +58,8 @@ import { SignupComponent } from './restaurant/signup/signup.component'
     RestaurantComponent,
     RestaurantDashboardComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ContactManagerComponent
   ],
   imports: [
     BrowserModule,

@@ -5,10 +5,11 @@
             <i class="fa fa-plus"></i> New
         </button>
     </div>
-    <div class="contacts-list">
+    <div class="contacts-list mt-4">
         <div class="contact-card" *ngFor="let contact of contactList" >
             <div class="contact-image">
-                Image: {{contact.photo}}
+                <img [src]="contact.photo" height="200" 
+                weight="200" >
             </div>
             <div class="contact-details">
                 {{contact.name}}

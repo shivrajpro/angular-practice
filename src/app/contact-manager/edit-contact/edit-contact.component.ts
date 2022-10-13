@@ -18,7 +18,18 @@ export class EditContactComponent implements OnInit {
     private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.contactForm = this.fb.group({
+      name:[''],
+      email:[''],
+      photo:[''],
+      mobile:[''],
+      company: [''],
+      title:[''],
+      groupId: ['']
+    })
+
     this.route.params.subscribe((params)=>{
+
       console.log(" params",params);
       this.editMode = !!params.id;
 
@@ -35,15 +46,6 @@ export class EditContactComponent implements OnInit {
       }
     })
 
-    this.contactForm = this.fb.group({
-      name:[''],
-      email:[''],
-      photo:[''],
-      mobile:[''],
-      company: [''],
-      title:[''],
-      groupId: ['']
-    })
   }
 
   onSave(){

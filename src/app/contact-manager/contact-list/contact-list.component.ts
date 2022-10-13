@@ -9,7 +9,8 @@ import { ContactService } from '../services/contact.service';
 })
 export class ContactListComponent implements OnInit {
   contactList:IContact[] = [];
-  
+  filterBy:string = '';
+
   constructor(private contactService: ContactService) { }
 
   ngOnInit(): void {

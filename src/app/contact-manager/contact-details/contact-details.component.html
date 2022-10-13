@@ -1,1 +1,29 @@
-<p>contact-details works!</p>
+<div class="contact-details">
+    <div class="image mb-3">
+        <img [src]="contactData.photo" height="200" width="200" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Name </label> -
+        <span> {{contactData.name}} </span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Email</label> -
+        <span> {{contactData.email}} </span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Mobile</label> -
+        <span> {{contactData.mobile}} </span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Company</label> -
+        <span> {{contactData.company}} </span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Title</label> -
+        <span> {{contactData.title}} </span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Group</label> -
+        <span> {{contactData.groupId}} </span>
+    </div>
+</div>

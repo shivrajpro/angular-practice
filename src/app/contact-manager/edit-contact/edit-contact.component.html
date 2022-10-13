@@ -13,8 +13,8 @@
             <input type="text" formControlName="photo" class="form-control" id="photo" 
             placeholder="Enter photo url">
         </div>
-        <div class="mb-3">
-            <img [src]="contactForm.value.photo" height="200" width="200" >
+        <div *ngIf="contactForm.value.photo" class="mb-3">
+            <img [src]="contactForm.value.photo" height="200" width="200" alt="image" >
         </div>
         <div class="mb-3">
             <label for="mobile" class="form-label">Mobile:</label>

@@ -1,12 +1,12 @@
 <div class="container">
     <div class="header">
-        <input type="text" class="form-control search-input" placeholder="Search" >
+        <input type="text" class="form-control search-input" placeholder="Search contact"  [(ngModel)]="filterBy" >
         <button class="btn btn-success mx-4" routerLink="../new" >
             <i class="fa fa-plus"></i> New
         </button>
     </div>
     <div class="contacts-list mt-4">
-        <div class="contact-card" *ngFor="let contact of contactList" >
+        <div class="contact-card" *ngFor="let contact of contactList | filter: filterBy:'name'" >
             <div class="contact-image">
                 <img [src]="contact.photo" height="200" 
                 width="200" >

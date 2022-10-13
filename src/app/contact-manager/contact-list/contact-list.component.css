@@ -4,3 +4,43 @@
 .search-input{
     width: 40%;
 }
+
+.contacts-list{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.contact-card{
+    width: 45%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 10px 24px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    transform: scale(1.1);
+}
+.contact-details{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    margin: 0 24px;
+}
+.contact-image img{
+    border-radius: 50%;
+}
+
+.contact-operations{
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-operations i{
+    margin: 4px;
+    cursor: pointer;
+}

@@ -14,6 +14,9 @@
             placeholder="Enter photo url">
         </div>
         <div class="mb-3">
+            <img [src]="contactForm.value.photo" height="200" width="200" >
+        </div>
+        <div class="mb-3">
             <label for="mobile" class="form-label">Mobile:</label>
             <input type="number" formControlName="mobile" class="form-control" id="mobile" placeholder="Enter Mobile Number"
                 name="pswd">
@@ -35,6 +38,7 @@
             </select>
         </div>
 
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button *ngIf="!editMode" type="submit" class="btn btn-primary mb-3">Save</button>
+        <button *ngIf="editMode" type="submit" class="btn btn-warning mb-3">Update</button>
     </form>
 </div>

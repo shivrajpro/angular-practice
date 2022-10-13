@@ -9,12 +9,12 @@
         <div class="contact-card" *ngFor="let contact of contactList" >
             <div class="contact-image">
                 <img [src]="contact.photo" height="200" 
-                weight="200" >
+                width="200" >
             </div>
             <div class="contact-details">
-                {{contact.name}}
-                {{contact.email}}
-                {{contact.mobile}}
+                <p>{{contact.name}}</p>
+                <p>{{contact.email}}</p>
+                <p>{{contact.mobile}}</p>
             </div>
             <div class="contact-operations">
                 <i class="fa fa-eye" routerLink="{{'../'+contact.id}}"></i>

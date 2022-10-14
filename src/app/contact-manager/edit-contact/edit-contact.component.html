@@ -1,35 +1,35 @@
 <div class="container">
     <form [formGroup]="contactForm" (ngSubmit)="onSave()" >
-        <div class="mb-3 mt-3">
+        <div class="my-3">
             <label for="name" class="form-label">Name:</label>
             <input type="text" formControlName="name" class="form-control" placeholder="Enter Name">
         </div>
-        <div class="mb-3 mt-3">
+        <div class="my-3">
             <label for="email" class="form-label">Email:</label>
             <input type="email" formControlName="email" class="form-control" placeholder="Enter Email">
         </div>
-        <div class="mb-3">
+        <div class="my-3">
             <label for="photo" class="form-label">Photo:</label>
             <input type="text" formControlName="photo" class="form-control" id="photo" 
             placeholder="Enter photo url">
         </div>
-        <div *ngIf="contactForm.value.photo" class="mb-3">
+        <div *ngIf="contactForm.value.photo" class="my-3">
             <img [src]="contactForm.value.photo" height="200" width="200" alt="image" >
         </div>
-        <div class="mb-3">
+        <div class="my-3">
             <label for="mobile" class="form-label">Mobile:</label>
             <input type="number" formControlName="mobile" class="form-control" id="mobile" placeholder="Enter Mobile Number"
                 name="pswd">
         </div>
-        <div class="mb-3 mt-3">
+        <div class="my-3">
             <label for="company" class="form-label">Company:</label>
             <input type="text" formControlName="company" class="form-control" id="company" placeholder="Enter Company Name">
         </div>
-        <div class="mb-3 mt-3">
+        <div class="my-3">
             <label for="title" class="form-label">Title:</label>
             <input type="text" formControlName="title" class="form-control" id="title" placeholder="Enter Title">
         </div>
-        <div class="mb-3 mt-3">
+        <div class="my-3">
             <label for="title" class="form-label">Select Group</label>
             <select class="form-select" formControlName="groupId" >
                 <option value="family">Family</option>

@@ -12,7 +12,8 @@
                 width="200" >
             </div>
             <div class="contact-details">
-                <p>{{contact.name}}</p>
+                <p class="text-contaniner" 
+                [innerHtml]="contact.name | highlight:filterBy:'partial'">{{contact.name}}</p>
                 <p>{{contact.email}}</p>
                 <p>{{contact.mobile}}</p>
             </div>

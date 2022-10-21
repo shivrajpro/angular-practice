@@ -35,7 +35,8 @@ import { SignupComponent } from './restaurant/signup/signup.component';
 import { ContactManagerComponent } from './contact-manager/contact-manager.component';
 import { ContactDetailsComponent } from './contact-manager/contact-details/contact-details.component';
 import { EditContactComponent } from './contact-manager/edit-contact/edit-contact.component';
-import { ContactListComponent } from './contact-manager/contact-list/contact-list.component'
+import { ContactListComponent } from './contact-manager/contact-list/contact-list.component';
+import { HighlightPipe } from './contact-manager/highlight.pipe'
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +66,8 @@ import { ContactListComponent } from './contact-manager/contact-list/contact-lis
     ContactManagerComponent,
     ContactDetailsComponent,
     EditContactComponent,
-    ContactListComponent
+    ContactListComponent,
+    HighlightPipe
   ],
   imports: [
     BrowserModule,

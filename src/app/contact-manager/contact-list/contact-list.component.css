@@ -44,3 +44,7 @@
     margin: 4px;
     cursor: pointer;
 }
+
+::ng-deep .highlighted-text{
+    background-color: yellow;
+}
